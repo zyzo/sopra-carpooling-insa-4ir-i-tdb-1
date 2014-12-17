@@ -9,7 +9,7 @@
  * Download and extract [http://tomcat.apache.org/download-80.cgi Apache Tomcat 8.0.15] (Core)
   
 
- * Install svn plugin for eclipse ([https://eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php] detailed instructions here)
+ * Install svn plugin for eclipse ([https://eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php] detailed instructions here])
 
  * Checkout /trunk/PracticalExamples project to test the environment (check PracticalExamples/README.md for more info)
 
