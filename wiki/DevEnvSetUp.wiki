@@ -1,0 +1,27 @@
+#summary Simple guide to set up local development environment for the project
+
+= Eclipse & Tomcat =
+
+ * Download (if not already) [http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html JDK1.7] 
+
+ * Download and extract [https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar Eclipse Luna for JavaEE]
+
+ * Download and extract [http://tomcat.apache.org/download-80.cgi Apache Tomcat 8.0.15] (Core)
+  
+
+ * Install svn plugin for eclipse ([https://eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php] detailed instructions here)
+
+ * Checkout /trunk/PracticalExamples project to test the environment (check PracticalExamples/README.md for more info)
+
+-----
+= MySQL =
+ 
+ * Install [http://dev.mysql.com/downloads/mysql/#downloads MySQL 5.6.22] 
+ * Replace username and password in PracticalExamples/db/setupDatabase.sql and run those scripts, (could use [http://docs.phpmyadmin.net/en/latest/setup.html phpMyAdmin] to have nice mysql user interface)
+ * To be continued...
+
+---> Useful sources : 
+
+http://openclassrooms.com/courses/creez-votre-application-web-avec-java-ee/outils-et-environnement-de-developpement
+
+http://openclassrooms.com/courses/creez-votre-application-web-avec-java-ee/introduction-a-mysql-et-jdbc
