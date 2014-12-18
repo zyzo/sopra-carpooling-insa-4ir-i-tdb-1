@@ -17,9 +17,10 @@
 = MySQL =
  
  * Install [http://dev.mysql.com/downloads/mysql/#downloads MySQL 5.6.22] 
- * Replace username and password in PracticalExamples/db/setupDatabase.sql and run those scripts, (could use [http://docs.phpmyadmin.net/en/latest/setup.html phpMyAdmin] to have nice mysql user interface)
- * To be continued...
-
+ * Run all scripts in _PracticalExamples/db/setupDatabase.sql_, 3 first commands must be executed by mysql root user
+  (could use [http://docs.phpmyadmin.net/en/latest/setup.html phpMyAdmin] to have nice mysql user interface)
+ * Go to http://localhost:8080/PracticalExamples/suggest, post a suggestion and test if it is inserted to the database. 
+----
 ---> Useful sources : 
 
 http://openclassrooms.com/courses/creez-votre-application-web-avec-java-ee/outils-et-environnement-de-developpement
