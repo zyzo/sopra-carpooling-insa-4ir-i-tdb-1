@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Page Connection</title>
-<link href="custom/css/login.css" rel="stylesheet"/>
+<link href="custom/css/main.css" rel="stylesheet"/>
 </head>
 <body>
 	<form action="login" method="post">
@@ -13,7 +13,7 @@
 		<input name="username" type="text" placeholder="Votre identifiant" required="required"/><br/><br/>
 		<label for="passwd">Mot de passe</label>
 		<input name="passwd" type="password" placeholder="Votre mot de passe" required="required"/><br/><br/>
-		<button type="submit">Se connecter</button>
+		<button id="loginButton" type="submit">Se connecter</button>
 	</form>
 </body>
 </html>
