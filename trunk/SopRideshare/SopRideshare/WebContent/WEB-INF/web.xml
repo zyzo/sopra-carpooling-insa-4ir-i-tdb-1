@@ -2,14 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          id="WebApp_ID" version="3.1">
-  <display-name>PracticalExamples</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+  <display-name>Sop'Rideshare</display-name>
+  
+  <!-- Import taglibs to all jsp files -->
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
-      <include-prelude>/WEB-INF/tags/taglib.jsp</include-prelude>
+      <include-prelude>/WEB-INF/tags/tagLib.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
+
 </web-app>

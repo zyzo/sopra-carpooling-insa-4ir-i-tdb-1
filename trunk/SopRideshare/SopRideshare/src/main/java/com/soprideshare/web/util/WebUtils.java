@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class WebUtils {
 
-	public static void forward(HttpServletRequest request, HttpServletResponse response, String jspPage) throws ServletException, IOException {
-		request.getServletContext()
-			.getRequestDispatcher("/WEB-INF/" + jspPage)
-			.forward(request,response);
+	public static void forward(HttpServletRequest req, HttpServletResponse resp, String jspPage) 
+			throws ServletException, IOException {
+		req.getServletContext()
+			.getRequestDispatcher("/WEB-INF/jsp/" + jspPage)
+			.forward(req,resp);
 	}
 }
