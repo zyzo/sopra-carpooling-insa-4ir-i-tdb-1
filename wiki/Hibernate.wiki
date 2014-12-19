@@ -1,13 +1,14 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= Hibernare=
 
-Add your content here.
+Hibernate permet d'avoir une interface et une communication avec la base de donnée de manière simple
 
 
-= Details =
+= Mapping =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+S'il on veut mapper un java.beans avec une table, on utilise des annotations.
+
+1)  `code`@Entity
+@Table(name="covoiturage")
+public class User {`code`
