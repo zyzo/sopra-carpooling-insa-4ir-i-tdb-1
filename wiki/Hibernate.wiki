@@ -8,7 +8,32 @@ Hibernate permet d'avoir une interface et une communication avec la base de donn
 = Mapping =
 
 S'il on veut mapper un java.beans avec une table, on utilise des annotations.
+1) Dans le fichier XML, hibernate.cfg.xml, on rajoute une ligne :
+{{{
+<mapping class="NewClass"/>
+}}}
 
-1)  `code`@Entity
-@Table(name="covoiturage")
-public class User {`code`
+2)
+On indique dans la classe le nom de la table qui correspond
+{{{
+@Entity
+@Table(name="NameofTable")
+public class MyClass{
+}}}
+
+3) 
+
+On mappe un attribut avec les colonnes de la table
+{{{
+@Column(name = "nameofCollumn1")
+private int attribute1;
+@Column(name="nameofCollumn2")
+private String attribute2;
+@Column(name="nameofCollumn3")
+private String attribute3;
+}}}
+
+4) 
+Pour des cas plus compliqué (ManytoMany, jointure) 
+
+http://www.mkyong.com/tutorials/hibernate-tutorials/
