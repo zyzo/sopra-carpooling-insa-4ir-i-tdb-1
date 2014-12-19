@@ -37,3 +37,42 @@ private String attribute3;
 Pour des cas plus compliqué (ManytoMany, jointure) 
 
 http://www.mkyong.com/tutorials/hibernate-tutorials/
+
+5) Save
+
+Pour sauvegarder une nouvelle donnée, la procédure est simple : 
+Dans la classe DAO il faut les arguments :  
+{{{
+private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+private Session session = sessionFactory.openSession();
+}}}
+
+puis pour sauvegarder
+{{{
+public void register(User user){
+		session.beginTransaction();
+		session.save(user);
+		session.getTransaction().commit();
+	}
+}}}
+beginTransaction est la méthode pour commencer une liaison avec la Base de donnée
+save()rendre l'attribut dans la table
+session.getTransaction().commit(); 
+fini la transaction et ferme la liaison.
+
+6)
+
+Pour récupérer tous les élément d'une table de la base de donnée : 
+{{
+public List<User> getUser(){
+		session.beginTransaction();
+		Query query = session.createQuery("from covoiturage.beans.User");
+		List<User> ul = query.list();
+
+		session.getTransaction().commit();
+
+		return ul;
+
+}}
+
+Il faut créer un objet query qui contient en String la requête SQL.
