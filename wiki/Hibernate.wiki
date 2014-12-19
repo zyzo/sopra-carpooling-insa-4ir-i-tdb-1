@@ -63,7 +63,8 @@ fini la transaction et ferme la liaison.
 6)
 
 Pour récupérer tous les élément d'une table de la base de donnée : 
-{{
+{{{
+
 public List<User> getUser(){
 		session.beginTransaction();
 		Query query = session.createQuery("from covoiturage.beans.User");
@@ -73,6 +74,6 @@ public List<User> getUser(){
 
 		return ul;
 
-}}
+}}}
 
 Il faut créer un objet query qui contient en String la requête SQL.
