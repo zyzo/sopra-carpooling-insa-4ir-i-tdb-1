@@ -1,8 +1,7 @@
-
 -- Create database sopra + mysql user account 
 CREATE DATABASE sopride DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-GRANT ALL ON sopride.* TO sopra@localhost IDENTIFIED BY carpool;
-
+CREATE USER 'sopra'@'localhost' IDENTIFIED BY 'carpool';
+GRANT ALL ON sopride.* TO 'sopra'@'localhost' IDENTIFIED BY 'carpool';
 
 CREATE TABLE sopride.address (
   idAddress int(11) NOT NULL,
@@ -65,7 +64,5 @@ CREATE TABLE sopride.workplaces (
   workplace_name int(11) NOT NULL,
   PRIMARY KEY (workplace_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 
