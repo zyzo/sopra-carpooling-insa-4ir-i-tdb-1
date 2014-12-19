@@ -38,7 +38,7 @@ Pour des cas plus compliqué (ManytoMany, jointure)
 
 http://www.mkyong.com/tutorials/hibernate-tutorials/
 
-5) Save
+==Transaction avec la base de donnée==
 
 Pour sauvegarder une nouvelle donnée, la procédure est simple : 
 Dans la classe DAO il faut les arguments :  
@@ -60,7 +60,7 @@ save()rendre l'attribut dans la table
 session.getTransaction().commit(); 
 fini la transaction et ferme la liaison.
 
-6)
+
 
 Pour récupérer tous les élément d'une table de la base de donnée : 
 {{{
