@@ -1,4 +1,4 @@
-package com.soprideshare.web.servlet;
+package com.sopride.web.servlet;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.soprideshare.web.util.WebUtils;
+import com.sopride.web.util.WebUtils;
 
 @WebServlet("/")
 public class DefaultPageServlet extends HttpServlet {

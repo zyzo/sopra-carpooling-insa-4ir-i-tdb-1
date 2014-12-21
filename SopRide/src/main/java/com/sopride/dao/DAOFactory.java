@@ -1,4 +1,4 @@
-package com.soprideshare.dao;
+package com.sopride.dao;
 
 import com.jolbox.bonecp.BoneCP;
 import com.jolbox.bonecp.BoneCPConfig;
