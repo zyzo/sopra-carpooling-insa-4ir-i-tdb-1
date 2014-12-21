@@ -26,10 +26,21 @@ public class RideInfoDAO {
 		return instance;
 	}
 	
-	public void registerWorkday(RideInfoBE rideinfo){
+	public void registerRideInfo(RideInfoBE rideinfo){
 		session.beginTransaction();
 		session.save(rideinfo);
 		session.getTransaction().commit();
+	}
+	
+	public RideInfoBE getRideInfo(int id){
+		session.beginTransaction();
+		RideInfoBE rideinfo = (RideInfoBE) session.load(RideInfoBE.class, id);
+		session.getTransaction().commit();
+		return rideinfo;
+	}
+	
+	public static void main(String[] argc){
+		RideInfoBE rideinfo = RideInfoDAO.getInstance().getRideInfo(2);
 	}
 	
 

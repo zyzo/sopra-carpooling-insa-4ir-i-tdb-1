@@ -26,11 +26,12 @@ public class UserDAO {
 		return instance;
 	}
 	
-	public void registerWorkday(UserBE user){
+	public void registerUser(UserBE user){
 		session.beginTransaction();
 		session.save(user);
 		session.getTransaction().commit();
 	}
+	
 	
 	public UserBE getUser(int id){
 		session.beginTransaction();
@@ -39,4 +40,6 @@ public class UserDAO {
 		return user;
 	}
 	
+	
+
 }
