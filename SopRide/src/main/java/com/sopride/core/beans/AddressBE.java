@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class AddressBE {
 
     @Id
@@ -15,10 +16,10 @@ public class AddressBE {
     private int postCode;
 
     @Column(name = "city")
-    private int city;
+    private String city;
 
     @Column(name = "street")
-    private int street;
+    private String street;
 
     public int getId() {
         return id;
@@ -36,19 +37,19 @@ public class AddressBE {
         this.postCode = postCode;
     }
 
-    public int getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public int getStreet() {
+    public String getStreet() {
         return street;
     }
 
-    public void setStreet(int street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 

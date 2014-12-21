@@ -14,7 +14,12 @@ CREATE TABLE IF NOT EXISTS `address` (
   `city` varchar(50) NOT NULL,
   `street` varchar(50) NOT NULL,
   PRIMARY KEY (`idAddress`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `address`
+--
+
 
 -- --------------------------------------------------------
 
@@ -35,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 CREATE TABLE IF NOT EXISTS `car_pooling_infos` (
   `id_carpooling_infos` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
   `home` int(11) NOT NULL,
   `car_pooling_workplace` int(11) NOT NULL,
   `morning_hour` time NOT NULL,
@@ -45,8 +51,14 @@ CREATE TABLE IF NOT EXISTS `car_pooling_infos` (
   PRIMARY KEY (`id_carpooling_infos`),
   KEY `days` (`days`),
   KEY `car_pooling_workplace` (`car_pooling_workplace`),
-  KEY `home` (`home`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `home` (`home`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `car_pooling_infos`
+--
+
 
 -- --------------------------------------------------------
 
@@ -63,12 +75,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `phone` int(11) DEFAULT NULL,
   `number_connections` int(11) NOT NULL,
   `last_connected_date` datetime NOT NULL,
-  `id_car_pooling_infos` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
-  KEY `password` (`password`),
-  KEY `id_car_pooling_infos` (`id_car_pooling_infos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `password` (`password`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `users`
+--
+
 
 -- --------------------------------------------------------
 
@@ -86,7 +101,12 @@ CREATE TABLE IF NOT EXISTS `workingdays` (
   `samedi` tinyint(1) NOT NULL,
   `dimanche` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_workingdays`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `workingdays`
+--
+
 
 -- --------------------------------------------------------
 
@@ -100,6 +120,11 @@ CREATE TABLE IF NOT EXISTS `workplaces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Contenu de la table `workplaces`
+--
+
+
+--
 -- Contraintes pour les tables exportées
 --
 
@@ -108,14 +133,6 @@ CREATE TABLE IF NOT EXISTS `workplaces` (
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `userIsAdminFK` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `car_pooling_infos`
---
-ALTER TABLE `car_pooling_infos`
-  ADD CONSTRAINT `car_pooling_infos_ibfk_3` FOREIGN KEY (`home`) REFERENCES `address` (`idAddress`),
-  ADD CONSTRAINT `car_pooling_infos_ibfk_1` FOREIGN KEY (`car_pooling_workplace`) REFERENCES `workplaces` (`workplace_name`),
-  ADD CONSTRAINT `car_pooling_infos_ibfk_2` FOREIGN KEY (`days`) REFERENCES `workingdays` (`id_workingdays`);
 
 --
 -- Contraintes pour la table `workplaces`
