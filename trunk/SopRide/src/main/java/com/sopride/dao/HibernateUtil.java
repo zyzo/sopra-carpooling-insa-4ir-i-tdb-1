@@ -1,4 +1,4 @@
-package com.soprideshare.dao;
+package com.sopride.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,7 +10,7 @@ public class HibernateUtil {
     
     private static ServiceRegistry serviceRegistry;
     
-    //Exécuter qu'une seule fois
+    //Exï¿½cuter qu'une seule fois
     private static SessionFactory buildSessionFactory() {
         try {        	
             
@@ -32,8 +32,8 @@ public class HibernateUtil {
     }
 
     
-    // on peut accéder à la session UNIQUE (Singleton Pattern) 
-    // pour faire des requetes depuis n'importe où dans l'application 
+    // on peut accï¿½der ï¿½ la session UNIQUE (Singleton Pattern) 
+    // pour faire des requetes depuis n'importe oï¿½ dans l'application 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

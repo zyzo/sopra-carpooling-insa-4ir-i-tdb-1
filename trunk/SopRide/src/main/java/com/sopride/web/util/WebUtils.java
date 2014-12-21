@@ -1,4 +1,4 @@
-package com.soprideshare.web.util;
+package com.sopride.web.util;
 
 import java.io.IOException;
 
