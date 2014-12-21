@@ -36,7 +36,7 @@ public class UserBE {
     @Column(name = "last_connected_date")
     private Date lastConnected;
 
-    @OneToMany(mappedBy="car_pooling_infos")
+    @OneToMany(mappedBy="user")
     private List<RideInfoBE> ride_infos;
 
     public int getId() {
