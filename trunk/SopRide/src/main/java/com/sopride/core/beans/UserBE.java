@@ -1,7 +1,10 @@
 package com.sopride.core.beans;
 
 import javax.persistence.*;
+
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -10,7 +13,7 @@ public class UserBE {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "email")
     private String email;
@@ -31,17 +34,16 @@ public class UserBE {
     private Integer numberOfConnections;
 
     @Column(name = "last_connected_date")
-    private Timestamp lastConnected;
+    private Date lastConnected;
 
-    @OneToOne
-    @JoinColumn(name="id_car_pooling_infos", referencedColumnName="id_carpooling_infos")
-    private RideInfoBE rideInfo;
+    @OneToMany(mappedBy="car_pooling_infos")
+    private List<RideInfoBE> ride_infos;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -93,19 +95,13 @@ public class UserBE {
         this.numberOfConnections = numberOfConnections;
     }
 
-    public Timestamp getLastConnected() {
+    public Date getLastConnected() {
         return lastConnected;
     }
 
-    public void setLastConnected(Timestamp lastConnected) {
-        this.lastConnected = lastConnected;
+    public void setLastConnected(Date date) {
+        this.lastConnected = date;
     }
 
-    public RideInfoBE getRideInfo() {
-        return rideInfo;
-    }
 
-    public void setRideInfo(RideInfoBE rideInfo) {
-        this.rideInfo = rideInfo;
-    }
 }
