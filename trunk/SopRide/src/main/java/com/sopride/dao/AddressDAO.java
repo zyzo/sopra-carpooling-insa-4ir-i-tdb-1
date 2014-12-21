@@ -21,7 +21,7 @@ public class AddressDAO {
 			return instance;
 		}
 
-		public void save(AddressBE address) {
+		public void registerAddress(AddressBE address) {
 			session.beginTransaction();
 			session.save(address);
 			session.getTransaction().commit();
