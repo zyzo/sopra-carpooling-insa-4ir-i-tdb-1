@@ -20,6 +20,7 @@
 	<mapping class="com.sopride.core.beans.WorkplaceBE"/>
 	<mapping class="com.sopride.core.beans.WorkdayBE"/>
 	<mapping class="com.sopride.core.beans.RideInfoBE"/>
+	<mapping class="com.sopride.core.beans.UserBE"/>
 	
 	
 </session-factory>
