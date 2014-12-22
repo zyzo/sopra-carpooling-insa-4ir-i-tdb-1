@@ -103,5 +103,13 @@ public class UserBE {
         this.lastConnected = date;
     }
 
+	public List<RideInfoBE> getRide_infos() {
+		return ride_infos;
+	}
+
+	public void setRide_infos(List<RideInfoBE> ride_infos) {
+		this.ride_infos = ride_infos;
+	}
+
 
 }
