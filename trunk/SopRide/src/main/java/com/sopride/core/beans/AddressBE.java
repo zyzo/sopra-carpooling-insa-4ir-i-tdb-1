@@ -9,7 +9,7 @@ public class AddressBE {
 
     @Id
     @GeneratedValue
-    @Column(name = "idAdress")
+    @Column(name = "idAddress")
     private int id;
 
     @Column(name = "postcode")
