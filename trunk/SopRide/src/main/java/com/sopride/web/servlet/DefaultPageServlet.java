@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.web.util.WebUtils;
 
-@WebServlet("/")
+@WebServlet("/home")
 public class DefaultPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
