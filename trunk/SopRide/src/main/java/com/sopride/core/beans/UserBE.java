@@ -8,7 +8,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@NamedQueries(
+        @NamedQuery(name = UserBE.FIND_BY_EMAIL, query = "from UserBE where email = :email")
+)
 public class UserBE {
+
+    public static final String FIND_BY_EMAIL = "com.sopride.core.beans.UserBE.FIND_BY_EMAIL";
 
     @Id
     @GeneratedValue

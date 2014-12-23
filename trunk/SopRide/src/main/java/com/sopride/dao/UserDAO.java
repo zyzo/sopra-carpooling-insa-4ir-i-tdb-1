@@ -1,14 +1,9 @@
 package com.sopride.dao;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.Calendar;
-
+import com.sopride.core.beans.UserBE;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.sopride.core.beans.UserBE;
-import com.sopride.core.beans.WorkdayBE;
 
 public class UserDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -38,6 +33,14 @@ public class UserDAO {
 		UserBE user = (UserBE)session.load(UserBE.class, id);
 		session.getTransaction().commit();
 		return user;
+	}
+
+	public UserBE findByEmail(String email) {
+		session.beginTransaction();
+		Query query = session.getNamedQuery(UserBE.FIND_BY_EMAIL);
+		query.setParameter("email", email);
+		session.getTransaction().commit();
+		return (UserBE) query.uniqueResult();
 	}
 	
 	
