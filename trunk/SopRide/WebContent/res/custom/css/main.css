@@ -1,0 +1,19 @@
+#loginForm, #loginFormExternalLinks {
+	width : 390px;
+	margin : auto;
+}
+
+#loginFormExternalLinks > a {
+	margin-top : 20px;
+	margin-right : 20px;
+}
+
+#loginForm {
+	margin-top : 35px;
+}
+
+#loginForm > button {
+	margin-top : 10px;
+	margin-right : 10px;
+	float : right;
+}
