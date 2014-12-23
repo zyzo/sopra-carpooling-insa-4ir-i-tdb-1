@@ -5,13 +5,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SopRide</title>
-    <!-- Bootstrap core CSS -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <%-- Bootstrap core CSS --%>
+    <link href="res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <%-- Custom styles for this template --%>
+    <%-- <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">--%>
+    <link href="res/custom/css/main.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <%-- TODO : change to bootstrap.min.js in the production version --%>
+    <!--<script src="res/bootstrap/js/bootstrap.js"></script>-->
 </head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -21,36 +24,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Sopride</a>
+            <a class="navbar-brand" href="home">SopRide</a>
         </div>
 
-        <div id="navbar2" class="navbar-collapse collapse navbar-right">
-            <a href="user_profile.html" id="aNavbar2"></a> <br>
-            <a id="disconnectButton" href="index.html" onclick="sessionStorage.setItem('signedIn', false)">Disconnect</a>
-        </div><!--/.navbar-collapse -->
-        <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form" action="user_profile.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control" id="Email" required="true">
+        <c:choose>
+            <c:when test="${empty sessionScope.loggedInUser}" >
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" role="form" action="login" method="GET">
+                        <button type="submit" id="connectButton" class="btn btn-success">Se connecter</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+            </c:when>
+            <c:otherwise>
+                <div id="navbar2" class="navbar-collapse collapse navbar-right">
+                    <a href="userProfile" id="aNavbar2">Welcome, ${sessionScope.loggedInUser.email}</a> <br>
+                    <form class="navbar-form navbar-right" role="form" action="disconnect" method="GET">
+                        <button type="submit" id="disconnectButton" class="btn btn-fail">Disconnect</button>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-success" onclick="sessionStorage.setItem('signedIn', $('#Email').val())">Sign in</button>
-            </form>
-        </div><!--/.navbar-collapse -->
+            </c:otherwise>
+        </c:choose>
+        </div>
 
 
     </div>
 </nav>
-
-<script>
-    if (sessionStorage.getItem('signedIn') == null || sessionStorage.getItem('signedIn') == 'false') {
-        $('#navbar2').attr('style', 'display : none! important');
-        $('#navbar').attr("style", "display : block");
-    } else {
-        $('#navbar').attr('style', 'display : none! important');
-        $('#navbar2').attr("style", "display : block");
-        $('#aNavbar2').text("Welcome back, " + sessionStorage.getItem('signedIn'));
-    }
-</script>
