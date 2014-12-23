@@ -6,17 +6,20 @@
 <hibernate-configuration>
 <session-factory>
 	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-	<property name="hibernate.connection.url">jdbc:mysql://localhost/</property>
-	<property name="hibernate.connection.username">root</property>
-	<property name="hibernate.connection.password"></property>
+	<property name="hibernate.connection.url">jdbc:mysql://localhost/sopride</property>
+	<property name="hibernate.connection.username">sopra</property>
+	<property name="hibernate.connection.password">carpool</property>
 	
 	<property name="hibernate.connection.pool_size">10</property>
 	<property name="show_sql">false</property>
 	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 	<property name="hibernate.current_session_context_class">thread</property>
-	
-	<mapping class=""/>
-	
-	
+
+	<mapping class="com.sopride.core.beans.AddressBE"/>
+	<mapping class="com.sopride.core.beans.WorkplaceBE"/>
+	<mapping class="com.sopride.core.beans.WorkdayBE"/>
+	<mapping class="com.sopride.core.beans.RideInfoBE"/>
+	<mapping class="com.sopride.core.beans.UserBE"/>
+
 </session-factory>
 </hibernate-configuration>
