@@ -1,5 +1,8 @@
 package com.sopride.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -34,6 +37,14 @@ public class WorkPlaceDAO {
 		WorkplaceBE worplace= (WorkplaceBE) session.load(WorkplaceBE.class, id);
 		session.getTransaction().commit();
 		return worplace;
+	}
+	
+	public List<WorkplaceBE> getAllWorkplace(){
+        session.beginTransaction();
+        Query query = session.createQuery("from com.sopride.core.beans.WorkplaceBE");
+        List<WorkplaceBE> ul = query.list();
+        session.getTransaction().commit();
+        return ul;
 	}
 	
 }
