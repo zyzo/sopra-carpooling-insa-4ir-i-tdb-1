@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity
@@ -47,10 +48,11 @@ public class UserBE {
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public UserBE(){
+    	this.lastConnected = new Date(Calendar.getInstance().getTimeInMillis());
+    	this.numberOfConnections = 1; 
     }
+
 
     public String getEmail() {
         return email;

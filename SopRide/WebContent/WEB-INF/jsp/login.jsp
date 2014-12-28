@@ -1,7 +1,7 @@
 <t:baseLayout>
   <div class="jumbotron">
     <div class="container">
-      <form id="loginForm" class="form" role="form" action="login" method="POST">
+      <form id="loginForm" class="form" role="form" action="login" method="post">
         <div class="form-group">
        		<label for="email">Email</label>
           	<input type="email" name="email" placeholder="Votre email" class="form-control" id="email" required="required">
