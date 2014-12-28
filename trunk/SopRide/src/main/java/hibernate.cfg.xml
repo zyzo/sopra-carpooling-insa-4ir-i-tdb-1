@@ -14,7 +14,7 @@
 	<property name="show_sql">false</property>
 	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 	<property name="hibernate.current_session_context_class">thread</property>
-	
+		
 	
 	<mapping class="com.sopride.core.beans.AddressBE"/>
 	<mapping class="com.sopride.core.beans.WorkplaceBE"/>

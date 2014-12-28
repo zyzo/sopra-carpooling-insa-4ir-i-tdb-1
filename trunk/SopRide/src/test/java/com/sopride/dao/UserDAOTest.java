@@ -1,6 +1,8 @@
 package com.sopride.dao;
 
 import com.sopride.core.beans.UserBE;
+import com.sopride.core.exception.DaoException;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,7 +25,12 @@ public class UserDAOTest {
         user.setPassword("Halo");
         user.setLastConnected(new Date((new java.util.Date()).getTime()));
         user.setNumberOfConnections(0);
-        userDAO.registerUser(user);
+        try {
+			userDAO.registerUser(user);
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Test
