@@ -47,4 +47,10 @@ public class WorkPlaceDAO {
         return ul;
 	}
 	
+	public void removeWorkPlace(int id){
+		session.beginTransaction();
+		WorkplaceBE workplace = (WorkplaceBE) session.load(WorkplaceBE.class, id);
+		session.delete(workplace);
+		session.getTransaction().commit();
+	}
 }
