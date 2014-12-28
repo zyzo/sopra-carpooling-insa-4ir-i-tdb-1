@@ -7,7 +7,7 @@
 			<h1>Administration des lieux de travail :</h1>
 			<ul>
 				<c:forEach var="workplace" items="${list}">
-					<li><c:out value="${workplace.city}" />
+					<li> ${workplace.postCode} ${workplace.city} : ${workplace.street} 
 						<a class="btn btn-info" href="/SopRide/modifyworkplace?id=${workplace.id }">
 							<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 							Modifier
