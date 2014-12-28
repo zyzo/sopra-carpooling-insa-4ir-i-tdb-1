@@ -6,23 +6,31 @@
 		<div class="container">
 			<h1>Administration des lieux de travail :</h1>
 			<ul>
-			<c:forEach var="workplace" items="${list}">
-				<li>
-					<c:out value="${workplace.city}" />
-					<button type="button" class="btn btn-default">Modifier</button>
-					<button type="button" class="btn btn-danger">Supprimer</button>
-				</li>
-				
-			</c:forEach>
-			<ul>
+				<c:forEach var="workplace" items="${list}">
+					<li><c:out value="${workplace.city}" />
+						<a class="btn btn-info" href="/SopRide/modifyworkplace?id=${workplace.id }">
+							<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+							Modifier
+						</a>
+						<a class="btn btn-danger" href="/SopRide/deleteworkplace?id=${workplace.id }">
+							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							Supprimer
+						</a></li>
+
+				</c:forEach>
+			</ul>
+			
+			<p class="text-right"> 
+			<a class="btn btn-default" href="/SopRide/addworkplace" role="button">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							Ajouter
+			</a>
+			</p>
+						
 		</div>
 	</div>
 
 
-	<%-- 
-			<button type="button" class="btn btn-default">Modify</button>
-			
-	--%>
 
 
 </t:baseLayout>
