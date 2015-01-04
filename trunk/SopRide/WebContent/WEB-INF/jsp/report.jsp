@@ -6,7 +6,7 @@
 		
   			<div class="panel-heading"><h2>Nombre de connexion</h2></div>
   			  <div class="panel-body">
-  			  		<p>Le nombre de connexion total est : ${total}</p>
+  			  		<p>Connexions depuis le lancement de l'application : ${total}</p>
 				</div>
   				<table class="table">
   				<tr><th>Nom</th><th>Adresse électronique</th><th>Nombre de connexion</th></tr>
