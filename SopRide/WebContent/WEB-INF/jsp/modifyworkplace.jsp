@@ -3,6 +3,7 @@
 		<div class="container">	
 		 <form id="modifyForm" class="form" role="form" method="POST">
         <div class="form-group">
+        <br/> <br/> 
        		<label for="postcode">Code postal : ${ workplace.postCode }</label>
           	<input name="postcode" type="text" id="postcode" placeholder="Nouvelle valeur" class="form-control" required="required">       	
         </div>

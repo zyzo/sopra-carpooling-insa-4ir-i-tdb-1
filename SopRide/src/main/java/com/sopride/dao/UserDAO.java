@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Calendar;
 
 import com.sopride.core.beans.UserBE;
+import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.core.exception.DaoException;
 
 import org.hibernate.Query;
@@ -53,6 +54,18 @@ public class UserDAO {
 		return (UserBE) query.uniqueResult();
 	}
 	
+	public void removeUser(int id){
+		session.beginTransaction();
+		UserBE user = (UserBE)session.load(UserBE.class, id);
+		session.delete(user);
+		session.getTransaction().commit();
+	}
+	
 
+	public void updateUser(UserBE user){
+		session.beginTransaction();
+		session.update(user);
+		session.getTransaction().commit();
+	}
 
 }
