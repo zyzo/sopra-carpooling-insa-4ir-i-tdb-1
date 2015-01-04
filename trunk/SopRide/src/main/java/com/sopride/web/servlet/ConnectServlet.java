@@ -44,6 +44,10 @@ public class ConnectServlet extends HttpServlet {
         }
 
         req.getSession().setAttribute(WebConstants.SESSION_LOGGED_IN_USER, user);
+        user.setNumberOfConnections(user.getNumberOfConnections()+1);
+        userDAO.updateUser(user);
+        
+        req.setAttribute("user", user);
         WebUtils.forward(req, resp, "index.jsp");
     }
 }
