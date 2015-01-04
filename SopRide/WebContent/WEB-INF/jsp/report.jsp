@@ -4,7 +4,7 @@
 		<br/>  <br/> 
 		<div class="panel panel-default">
 		
-  			<div class="panel-heading"><h2>Nombre de Connexion</h2></div>
+  			<div class="panel-heading"><h2>Nombre de connexion</h2></div>
   			  <div class="panel-body">
   			  		<p>Le nombre de Connexion total est : ${total}</p>
 				</div>
