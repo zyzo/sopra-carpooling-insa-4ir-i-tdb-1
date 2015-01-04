@@ -2,6 +2,7 @@ package com.sopride.dao;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
@@ -38,7 +39,13 @@ public class UserDAO {
 		}
 	}
 	
-	
+	public List<UserBE> getAllUser(){
+        session.beginTransaction();
+        Query query = session.createQuery("from com.sopride.core.beans.UserBE");
+        List<UserBE> ul = query.list();
+        session.getTransaction().commit();
+        return ul;
+	}
 	public UserBE getUser(int id){
 		session.beginTransaction();
 		UserBE user = (UserBE)session.load(UserBE.class, id);
