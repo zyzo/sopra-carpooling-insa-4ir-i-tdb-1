@@ -51,13 +51,13 @@
       
 		</div>
 	
-	<ul> <p> <c:if test="${ !empty erreur }">
+	<ul>  <c:if test="${ !empty erreur }">
 	              <p style="color:red;"><c:out value="${ erreur }" /></p>
 	              <script type="text/javascript" > 
 	              $(document).ready(function() { document.getElementById('mdpBlock').style.display = "block" }) ;
 	              </script>
 
-	</c:if> </p> </ul>
+	</c:if>  </ul>
 	
 	</div>
 	

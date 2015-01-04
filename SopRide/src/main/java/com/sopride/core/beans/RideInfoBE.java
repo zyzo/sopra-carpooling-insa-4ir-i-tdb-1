@@ -45,51 +45,66 @@ public class RideInfoBE {
 	@Type(type="boolean")
 	@Column(name="driver")
 	private boolean driver;
+	
+	
 	public AddressBE getHome() {
 		return home;
 	}
+	
 	public void setHome(AddressBE home) {
 		this.home = home;
 	}
+	
 	public WorkplaceBE getCar_pooling_workplace() {
 		return car_pooling_workplace;
 	}
+	
 	public void setCar_pooling_workplace(WorkplaceBE car_pooling_workplace) {
 		this.car_pooling_workplace = car_pooling_workplace;
 	}
+	
 	public Time getMorning_hour() {
 		return morning_hour;
 	}
+	
 	public void setMorning_hour(Time morning_hour) {
 		this.morning_hour = morning_hour;
 	}
+	
 	public Time getNight_hour() {
 		return night_hour;
 	}
+	
 	public void setNight_hour(Time night_hour) {
 		this.night_hour = night_hour;
 	}
 	public WorkdayBE getDays() {
 		return days;
 	}
+	
 	public void setDays(WorkdayBE days) {
 		this.days = days;
 	}
+	
 	public boolean isNotify() {
 		return notify;
 	}
 	public void setNotify(boolean notify) {
 		this.notify = notify;
 	}
+	
 	public boolean isDriver() {
 		return driver;
 	}
+	
 	public void setDriver(boolean driver) {
 		this.driver = driver;
 	}
+	
 	public UserBE getUser() {
 		return user;
 	}
+	
 	public void setUser(UserBE user) {
 		this.user = user;
 	}
