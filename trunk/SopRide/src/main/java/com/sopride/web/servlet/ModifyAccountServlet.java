@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
-import com.sopride.core.beans.WorkplaceBE;
-import com.sopride.core.exception.DaoException;
 import com.sopride.dao.UserDAO;
-import com.sopride.dao.WorkPlaceDAO;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -20,13 +17,13 @@ import com.sopride.web.util.WebUtils;
  * Servlet implementation class ModifyAccount
  */
 @WebServlet("/ModifyAccount")
-public class ModifyAccount extends HttpServlet {
+public class ModifyAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ModifyAccount() {
+	public ModifyAccountServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
