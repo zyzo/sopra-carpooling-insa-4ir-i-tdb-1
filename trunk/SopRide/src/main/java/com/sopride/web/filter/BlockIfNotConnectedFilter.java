@@ -1,5 +1,8 @@
 package com.sopride.web.filter;
 
+import com.sopride.web.controller.UserCtrl;
+import com.sopride.web.util.WebUtils;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -17,7 +20,7 @@ import java.io.IOException;
                 "/report",
                 "/disconnect",
                 "/manageaccount",
-                "manageworkplaces",
+                "/manageworkplaces",
                 "/modifyaccount",
                 "/modifyworkplace",
                 "/ridesharemanager",
@@ -25,12 +28,17 @@ import java.io.IOException;
                 "/userProfile",
             })
 public class BlockIfNotConnectedFilter implements Filter {
+
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Filtering check connected filter");
-        chain.doFilter(req, resp);
+        UserCtrl userCtrl = WebUtils.getUserCtrl(req);
+        if (userCtrl.isConnected()) {
+            chain.doFilter(req, resp);
+        } else {
+            WebUtils.forward(req, resp, "notConnected.jsp");
+        }
     }
 
     public void init(FilterConfig config) throws ServletException {
