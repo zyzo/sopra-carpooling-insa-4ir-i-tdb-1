@@ -2,7 +2,7 @@
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Administration des trajets de covoiturage :</h1>
+			<br/> <h2>Administration des trajets de covoiturage </h2> <br/>
 			<ul>
 				<c:forEach var="rideshare" items="${list}">
 					<li> ${rideshare.home} -  ${rideshare.car_pooling_workplace} ( ${rideshare.morning_hour} -${rideshare.night_hour} ) 
