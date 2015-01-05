@@ -2,6 +2,9 @@ package com.sopride.core.beans;
 
 import javax.persistence.*;
 
+import com.sopride.core.exception.DaoException;
+import com.sopride.core.exception.UserException;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -66,8 +69,8 @@ public class UserBE {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password){
+        	this.password = password;
     }
 
     public String getLast_name() {
@@ -87,11 +90,19 @@ public class UserBE {
     }
 
     public Integer getPhone() {
+    	
         return phone;
+    	
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Integer phone) throws UserException {
+    	try{
         this.phone = phone;
+        
+    	}catch(NumberFormatException e){
+    	throw new UserException("Numéro de téléphone non valide");
+    		
+    	}
     }
 
     public Integer getNumberOfConnections() {

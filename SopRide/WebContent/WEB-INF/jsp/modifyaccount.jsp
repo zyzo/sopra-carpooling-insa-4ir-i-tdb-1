@@ -59,7 +59,10 @@
 
 	</c:if>  </ul>
 	
+	
 	</div>
+	  <c:if test="${ !empty erreur1 }"><p style="color:red;"><c:out value="${ erreur1 }" /></p></c:if>
+      <c:if test="${ !empty erreur2 }"><p style="color:red;"><c:out value="${ erreur2 }" /></p></c:if>
 	
 </t:baseLayout>
 
