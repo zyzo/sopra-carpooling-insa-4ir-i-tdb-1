@@ -39,11 +39,12 @@ public class ConnectServlet extends HttpServlet {
         UserBE user = userDAO.findByEmail(email);
         if (user == null) {
             throw new LoginFailedException("Utilisateur non trouvé");
-        }  else if (!user.getPassword().equals(password)) {
+        }  else if (!user.passwordIsCorrect(password)) {
             throw new LoginFailedException("Mot de passe invalide");
         }
 
         req.getSession().setAttribute(WebConstants.SESSION_LOGGED_IN_USER, user);
+        
         user.setNumberOfConnections(user.getNumberOfConnections()+1);
         userDAO.updateUser(user);
         
