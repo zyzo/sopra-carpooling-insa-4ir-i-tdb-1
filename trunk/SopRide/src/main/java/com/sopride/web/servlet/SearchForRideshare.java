@@ -20,7 +20,7 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class SearchForRideshare
  */
-@WebServlet("/SearchForRideshare")
+@WebServlet("/ridesharePossible")
 public class SearchForRideshare extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -60,10 +60,10 @@ public class SearchForRideshare extends HttpServlet {
 			}
 			request.setAttribute("list", matches_list);
 			if(matches_list != null){
-			WebUtils.forward(request, response, "RidesharePossible.jsp");
+			WebUtils.forward(request, response, "ridesharePossible.jsp");
 			}
 			else{
-				WebUtils.forward(request, response, "RideshareNotPossible.jsp");
+				WebUtils.forward(request, response, "rideshareNotPossible.jsp");
 			}
 		} /*else {		
 		WebUtils.forward(request, response, "login.jsp");
