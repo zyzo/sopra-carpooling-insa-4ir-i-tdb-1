@@ -33,7 +33,7 @@ public class UserCtrl {
         return userDAO.isAdmin(user);
     }
 
-    private UserBE getUser() {
+    public UserBE getUser() {
         return (UserBE) session.getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
     }
 

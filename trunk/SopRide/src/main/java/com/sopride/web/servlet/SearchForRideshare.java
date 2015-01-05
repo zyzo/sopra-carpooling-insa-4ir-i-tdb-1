@@ -14,6 +14,7 @@ import com.sopride.core.beans.RideInfoBE;
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.controller.UserCtrl;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -36,7 +37,8 @@ public class SearchForRideshare extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserBE user = (UserBE) request.getSession().getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
+		UserCtrl userCtrl = (UserCtrl) request.getSession().getAttribute(WebConstants.SESSION_USER_CTRL);
+		UserBE user = userCtrl.getUser();
 		UserDAO DAO = UserDAO.getInstance();
 		List<UserBE> list = DAO.getAllUser();
 		
@@ -47,7 +49,6 @@ public class SearchForRideshare extends HttpServlet {
 		int postcode = info_user.getHome().getPostCode();
 		WorkplaceBE workplace = info_user.getCar_pooling_workplace();
 		
-		if (user != null) {			
 			List<UserBE> matches_list = new ArrayList<UserBE>();
 			for(UserBE user_aux : list){
 				if(user_aux != user){
@@ -65,9 +66,6 @@ public class SearchForRideshare extends HttpServlet {
 			else{
 				WebUtils.forward(request, response, "rideshareNotPossible.jsp");
 			}
-		} /*else {		
-		WebUtils.forward(request, response, "login.jsp");
-		}*/
 	}
 
 	/**
