@@ -48,6 +48,9 @@ public class UserBE {
     @OneToMany(mappedBy="user")
     private List<RideInfoBE> ride_infos;
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getId() {
         return id;
     }

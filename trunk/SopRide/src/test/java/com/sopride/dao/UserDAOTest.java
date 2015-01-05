@@ -2,8 +2,7 @@ package com.sopride.dao;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.DaoException;
-
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Date;
@@ -13,7 +12,7 @@ public class UserDAOTest {
 
     UserDAO userDAO;
 
-    @BeforeClass
+    @Before
     public void init() {
         userDAO = UserDAO.getInstance();
     }
@@ -43,6 +42,13 @@ public class UserDAOTest {
     public void testFindByEmail() {
         UserBE user = userDAO.findByEmail("aas@aa");
         System.out.println(user.getId());
+    }
+
+    @Test
+    public void testIsAdmin() {
+        UserBE user = new UserBE();
+        user.setId(1);
+        System.out.println(UserDAO.getInstance().isAdmin(user));
     }
 
 }
