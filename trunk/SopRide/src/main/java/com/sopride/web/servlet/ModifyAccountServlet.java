@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
+import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
@@ -53,7 +54,16 @@ public class ModifyAccountServlet extends HttpServlet {
 
 		user.setLast_name(request.getParameter("lastname"));
 		user.setFirst_name(request.getParameter("firstname"));
-		user.setPhone(Integer.parseInt(request.getParameter("phone")));
+		try {
+			user.setPhone(Integer.parseInt(request.getParameter("phone")));
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
+			WebUtils.forward(request, response, "modifyaccount.jsp");
+		} catch (UserException e1) {
+			request.setAttribute("erreur1", e1);
+			WebUtils.forward(request, response, "modifyaccount.jsp");
+		}
 
 		try{ 
 			if (!request.getParameter("prevpwd").equals("")) {

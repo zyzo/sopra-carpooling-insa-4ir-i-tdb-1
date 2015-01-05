@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.DaoException;
+import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
 import com.sopride.web.util.WebUtils;
 
@@ -43,7 +44,16 @@ public class RegisterServlet extends HttpServlet {
 		user.setEmail(request.getParameter("email"));
 		user.setFirst_name(request.getParameter("first_name"));
 		user.setLast_name(request.getParameter("last_name"));
-		user.setPhone(Integer.parseInt(request.getParameter("phone")));
+		try {
+			user.setPhone(Integer.parseInt(request.getParameter("phone")));
+		} catch (UserException e1) {
+			request.setAttribute("erreur1", e1.getMessage());
+			WebUtils.forward(request, response, "register.jsp");
+		} catch(NumberFormatException e2){
+			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
+			WebUtils.forward(request, response, "register.jsp");
+			
+		}
 		user.setPassword(request.getParameter("password"));
 		try {
 			UserDAO.getInstance().registerUser(user);

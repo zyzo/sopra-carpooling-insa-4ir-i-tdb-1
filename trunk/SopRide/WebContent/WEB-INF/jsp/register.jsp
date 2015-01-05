@@ -21,12 +21,14 @@
         </div>
          <div class="form-group">
        		<label for="password">Mot de Passe : </label>
-          	<input name="password" type="text" id="password"  class="form-control" required="required">       	
+          	<input name="password" type="password"  id="password"  class="form-control" required="required">       	
         </div>
         <button type="submit" class="btn btn-lg btn-primary">Valider</button>
       </form>
       
       <c:if test="${ !empty erreur }"><p style="color:red;"><c:out value="${ erreur }" /></p></c:if>
+      <c:if test="${ !empty erreur1 }"><p style="color:red;"><c:out value="${ erreur1 }" /></p></c:if>
+      <c:if test="${ !empty erreur2 }"><p style="color:red;"><c:out value="${ erreur2 }" /></p></c:if>
 
 
 </t:baseLayout>
