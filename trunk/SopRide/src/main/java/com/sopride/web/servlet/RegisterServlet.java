@@ -12,16 +12,17 @@ import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.DaoException;
 import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet("/inscription")
+@WebServlet(WebConstants.PATH_REGISTER)
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public RegisterServlet() {
@@ -50,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 			request.setAttribute("erreur1", e1.getMessage());
 			WebUtils.forward(request, response, "register.jsp");
 		} catch(NumberFormatException e2){
-			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
+			request.setAttribute("erreur2", ("Numï¿½ro de tï¿½lï¿½phone non valide"));
 			WebUtils.forward(request, response, "register.jsp");
 			
 		}

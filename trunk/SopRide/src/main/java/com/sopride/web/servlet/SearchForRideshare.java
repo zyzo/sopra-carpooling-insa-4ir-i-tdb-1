@@ -21,11 +21,11 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class SearchForRideshare
  */
-@WebServlet("/ridesharePossible")
+@WebServlet(WebConstants.PATH_RIDESHARE_POSSIBLE)
 public class SearchForRideshare extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public SearchForRideshare() {

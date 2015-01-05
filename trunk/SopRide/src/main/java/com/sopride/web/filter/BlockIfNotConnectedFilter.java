@@ -1,6 +1,7 @@
 package com.sopride.web.filter;
 
 import com.sopride.web.controller.UserCtrl;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 import javax.servlet.*;
@@ -13,19 +14,19 @@ import java.io.IOException;
  */
 @WebFilter(filterName = "BlockIfNotConnected",
         urlPatterns = {
-                "/addrideshare",
-                "/addworkplace",
-                "/deleteuser",
-                "/deleteworkplace",
-                "/report",
-                "/disconnect",
-                "/manageaccount",
-                "/manageworkplaces",
-                "/modifyaccount",
-                "/modifyworkplace",
-                "/ridesharemanager",
-                "/ridesharePossible",
-                "/userProfile",
+                WebConstants.PATH_ADD_RIDESHARE,
+                WebConstants.PATH_ADD_WORKPLACE,
+                WebConstants.PATH_DELETE_USER,
+                WebConstants.PATH_DELETE_WORKPLACE,
+                WebConstants.PATH_GET_REPORT,
+                WebConstants.PATH_DISCONNECT,
+                WebConstants.PATH_MANAGE_ACCOUNT,
+                WebConstants.PATH_MANAGE_WORKPLACE,
+                WebConstants.PATH_MODIFY_ACCOUNT,
+                WebConstants.PATH_MODIFY_WORKPLACE,
+                WebConstants.PATH_RIDESHARE_MANAGER,
+                WebConstants.PATH_RIDESHARE_POSSIBLE,
+                WebConstants.PATH_USER_PROFILE,
             })
 public class BlockIfNotConnectedFilter implements Filter {
 

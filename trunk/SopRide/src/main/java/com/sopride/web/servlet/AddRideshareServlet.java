@@ -23,9 +23,10 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class AddRideshareServlet
  */
-@WebServlet("/addrideshare")
+@WebServlet(WebConstants.PATH_ADD_RIDESHARE)
 public class AddRideshareServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();

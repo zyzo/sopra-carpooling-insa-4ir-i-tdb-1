@@ -15,12 +15,12 @@ import com.sopride.dao.UserDAO;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
-@WebServlet("/login")
+@WebServlet(WebConstants.PATH_LOGIN)
 public class ConnectServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	
-	private UserDAO userDAO;
+    private static final long serialVersionUID = 1L;
+
+    private UserDAO userDAO;
 
     @Override
     public void init() throws ServletException {

@@ -1,21 +1,24 @@
 package com.sopride.web.filter;
 
 import com.sopride.web.controller.UserCtrl;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-
+/** This filter checks admin rights on accessing some priviliged pages
+ * and redirect user to error message if user is not admin
+ */
 @WebFilter(filterName = "BlockIfNotAdmin",
         urlPatterns = {
-                "/addworkplace",
-                "/report",
-                "/manageworkplaces",
-                "/manageaccount",
-                "/modifyworkplace",
-                "/ridesharemanager",
+                WebConstants.PATH_ADD_WORKPLACE,
+                WebConstants.PATH_GET_REPORT,
+                WebConstants.PATH_MANAGE_WORKPLACE,
+                WebConstants.PATH_MANAGE_ACCOUNT,
+                WebConstants.PATH_MODIFY_WORKPLACE,
+                WebConstants.PATH_RIDESHARE_MANAGER,
         })
 public class BlockIfNotAdminFilter implements Filter {
     public void destroy() {

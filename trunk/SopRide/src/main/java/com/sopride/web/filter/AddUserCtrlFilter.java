@@ -18,7 +18,6 @@ public class AddUserCtrlFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Filtering add userCtrl");
         HttpServletRequest request = (HttpServletRequest) req;
         request.getSession().setAttribute(WebConstants.SESSION_USER_CTRL, new UserCtrl(request.getSession()));
         chain.doFilter(req, resp);
