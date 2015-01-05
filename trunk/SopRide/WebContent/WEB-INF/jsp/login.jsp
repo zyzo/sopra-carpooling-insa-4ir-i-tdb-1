@@ -16,7 +16,7 @@
     
     <div class="container">
     	<div id="loginFormExternalLinks">
-    		<a class="btn btn-default active" href="forgetPassword">Mot de passe oubliÃ© ? </a>
+    		<a class="btn btn-default active" href="forgetPassword">Mot de passe oublié ? </a>
     		 <a class="btn btn-default active" href="inscription">Nouvel utilisateur </a>
     	</div> 
   	</div>
