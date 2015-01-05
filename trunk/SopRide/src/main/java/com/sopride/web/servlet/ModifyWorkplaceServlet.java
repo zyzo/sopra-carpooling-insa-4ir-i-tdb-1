@@ -42,6 +42,8 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try  {
 		int Postcode = Integer.parseInt(request.getParameter("postcode"));
 		String City = request.getParameter("city");
 		String Street = request.getParameter("street");
@@ -55,11 +57,13 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 		workplace.setPostCode(Postcode);
 		workplace.setStreet(Street);
 		
-		DAO.removeWorkPlace(id);
-		DAO.registerWorkplace(workplace);
-		
+		DAO.updateWorkPlace(workplace); 		
 		WebUtils.forward(request, response, "workplacemodified.jsp");
+		} 
 		
+		catch (Exception e) {
+			WebUtils.forward(request, response, "index.jsp");
+		}
 	}
 
 }
