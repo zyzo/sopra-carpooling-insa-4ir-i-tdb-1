@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.controller.UserCtrl;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -48,8 +49,8 @@ public class ModifyAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		UserBE user = (UserBE) request.getSession().getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
+		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
+		UserBE user = userCtrl.getUser();
 		UserDAO DAO = UserDAO.getInstance() ; 
 
 		user.setLast_name(request.getParameter("lastname"));
