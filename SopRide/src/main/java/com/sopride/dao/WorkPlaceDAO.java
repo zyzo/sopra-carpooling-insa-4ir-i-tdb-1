@@ -53,4 +53,12 @@ public class WorkPlaceDAO {
 		session.delete(workplace);
 		session.getTransaction().commit();
 	}
+	
+	public void updateWorkPlace(WorkplaceBE workplace){
+		session.beginTransaction();
+		session.update(workplace);
+		session.getTransaction().commit();
+	}
+	
+	
 }
