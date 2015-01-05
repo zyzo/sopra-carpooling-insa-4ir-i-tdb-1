@@ -1,8 +1,10 @@
 package com.sopride.dao;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
@@ -17,7 +19,8 @@ public class UserDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private Session session = sessionFactory.openSession();
 	private static UserDAO instance;
-	
+	private static final String SQL_USER_IS_ADMIN = "select count(*) from admin where id = :userId";
+
 	private UserDAO(){
 		
 	}
@@ -35,7 +38,7 @@ public class UserDAO {
 			session.save(user);
 			session.getTransaction().commit();
 		}catch(ConstraintViolationException e){
-			throw new DaoException("Email déjà utilisé");
+			throw new DaoException("Email dï¿½jï¿½ utilisï¿½");
 		}
 	}
 	
@@ -75,4 +78,12 @@ public class UserDAO {
 		session.getTransaction().commit();
 	}
 
+	public boolean isAdmin(UserBE user) {
+		session.beginTransaction();
+		Query query = session.createSQLQuery(SQL_USER_IS_ADMIN)
+					.setParameter("userId", user.getId());
+		BigInteger count = (BigInteger) query.uniqueResult();
+		System.out.println(count);
+		return count.intValue() == 1;
+	}
 }
