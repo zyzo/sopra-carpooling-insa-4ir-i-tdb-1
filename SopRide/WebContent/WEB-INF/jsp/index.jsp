@@ -7,7 +7,7 @@
       <p>La plateforme de covoiturage des employés de Sopra </p>      
       
 
-	 <a class="btn btn-success" href="/SopRide/SearchForRideshare">
+	 <a class="btn btn-success" href="/SopRide/ridesharePossible">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							Search for Rideshare
 	  </a> <br/> <br/>
