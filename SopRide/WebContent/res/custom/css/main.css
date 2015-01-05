@@ -17,3 +17,9 @@
 	margin-right : 10px;
 	float : right;
 }
+
+.centerMessage {
+	margin: auto;
+	padding-top : 60px;
+	width : 100%;
+}
