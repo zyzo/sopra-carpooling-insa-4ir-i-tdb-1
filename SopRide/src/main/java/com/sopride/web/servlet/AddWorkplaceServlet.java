@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.dao.WorkPlaceDAO;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
  * Servlet implementation class AddWorkplaceServlet
  */
-@WebServlet("/addworkplace")
+@WebServlet(WebConstants.PATH_ADD_WORKPLACE)
 public class AddWorkplaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public AddWorkplaceServlet() {

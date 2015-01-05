@@ -21,11 +21,11 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class RideshareManager
  */
-@WebServlet("/ridesharemanager")
+@WebServlet(WebConstants.PATH_RIDESHARE_MANAGER)
 public class RideshareManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public RideshareManagerServlet() {

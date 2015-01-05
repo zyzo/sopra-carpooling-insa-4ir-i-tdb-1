@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.dao.UserDAO;
 import com.sopride.dao.WorkPlaceDAO;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
  * Servlet implementation class DeleteUser
  */
-@WebServlet("/deleteuser")
+@WebServlet(WebConstants.PATH_DELETE_USER)
 public class DeleteUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +35,7 @@ public class DeleteUser extends HttpServlet {
 		UserDAO DAO = UserDAO.getInstance();
 		String id = request.getParameter("id");
 		DAO.removeUser(Integer.parseInt(id));
-		WebUtils.forward(request, response, "deleteuser.jsp");
+		WebUtils.forward(request, response, WebConstants.PATH_DELETE_USER + ".jsp");
 	}
 
 	/**

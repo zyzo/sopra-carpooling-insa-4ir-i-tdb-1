@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
  * Servlet implementation class GetReportServlet
  */
-@WebServlet("/report")
+@WebServlet(WebConstants.PATH_GET_REPORT)
 public class GetReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public GetReportServlet() {

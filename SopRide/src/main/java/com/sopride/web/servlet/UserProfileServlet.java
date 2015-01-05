@@ -15,7 +15,7 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class userProfile
  */
-@WebServlet("/userProfile")
+@WebServlet(WebConstants.PATH_USER_PROFILE)
 public class UserProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

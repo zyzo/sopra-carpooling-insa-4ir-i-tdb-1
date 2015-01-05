@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
  * Servlet implementation class ManageAccountsServlet
  */
-@WebServlet("/manageaccount")
+@WebServlet(WebConstants.PATH_MANAGE_ACCOUNT)
 public class ManageAccountsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

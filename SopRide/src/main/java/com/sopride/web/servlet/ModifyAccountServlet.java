@@ -18,7 +18,7 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class ModifyAccount
  */
-@WebServlet("/modifyaccount")
+@WebServlet(WebConstants.PATH_MODIFY_ACCOUNT)
 public class ModifyAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
