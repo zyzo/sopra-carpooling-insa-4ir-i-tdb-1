@@ -14,6 +14,7 @@ import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.dao.UserDAO;
 import com.sopride.dao.WorkPlaceDAO;
+import com.sopride.web.controller.UserCtrl;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -36,18 +37,13 @@ public class RideshareManagerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserBE user = (UserBE) request.getSession().getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
-		
-		if (user != null) {			
-			List<RideInfoBE> list = user.getRide_infos() ; 
-			request.setAttribute("user", user);
-			request.setAttribute("list", list);
-			WebUtils.forward(request, response, "manageRideshares.jsp");
-		}
-		else {		
-		WebUtils.forward(request, response, "login.jsp");
-		}
-		
+		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
+		UserBE user = userCtrl.getUser();
+		List<RideInfoBE> list = user.getRide_infos() ;
+		request.setAttribute("user", user);
+		request.setAttribute("list", list);
+		WebUtils.forward(request, response, "manageRideshares.jsp");
+
 	}
 	
 

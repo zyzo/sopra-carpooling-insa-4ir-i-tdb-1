@@ -16,6 +16,7 @@ import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.dao.UserDAO;
 import com.sopride.dao.WorkPlaceDAO;
+import com.sopride.web.controller.UserCtrl;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -26,7 +27,7 @@ import com.sopride.web.util.WebUtils;
 public class AddRideshareServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserCtrl userCtrl = (UserCtrl) request.getSession().getAttribute(WebConstants.SESSION_USER_CTRL);
+		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
 		List<WorkplaceBE> list = DAO.getAllWorkplace();
 			request.setAttribute("user", userCtrl.getUser());
@@ -40,7 +41,7 @@ public class AddRideshareServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserBE user = (UserBE) request.getSession().getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
+		UserBE user = WebUtils.getUserCtrl(request).getUser();
 		UserDAO userDAO = UserDAO.getInstance() ; 
 		
 		WorkPlaceDAO workplaceDAO = WorkPlaceDAO.getInstance();
