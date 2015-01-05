@@ -1,5 +1,5 @@
 <div class="container">
     <footer>
-        <p>ï¿½ SopRide 2015</p>
+        <p>©SopRide 2015</p>
     </footer>
 </div>
