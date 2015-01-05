@@ -2,8 +2,11 @@ package com.sopride.core.beans;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Type;
+
 import com.sopride.core.exception.DaoException;
 import com.sopride.core.exception.UserException;
+import com.sopride.dao.CryptUtil;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -15,6 +18,7 @@ import java.util.List;
 @NamedQueries(
         @NamedQuery(name = UserBE.FIND_BY_EMAIL, query = "from UserBE where email = :email")
 )
+
 public class UserBE {
 
     public static final String FIND_BY_EMAIL = "com.sopride.core.beans.UserBE.FIND_BY_EMAIL";
@@ -73,7 +77,8 @@ public class UserBE {
     }
 
     public void setPassword(String password){
-        	this.password = password;
+    		
+        	this.password = CryptUtil.cryptPassword(password);
     }
 
     public String getLast_name() {
@@ -130,6 +135,10 @@ public class UserBE {
 
 	public void setRide_infos(List<RideInfoBE> ride_infos) {
 		this.ride_infos = ride_infos;
+	}
+	
+	public boolean passwordIsCorrect(String inputpassword){
+		return CryptUtil.checkPassword(this.password, inputpassword);
 	}
 
 
