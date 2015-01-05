@@ -10,4 +10,17 @@
       <include-prelude>/WEB-INF/tags/tagLib.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
+
+    <filter-mapping>
+      <filter-name>AddUserCtrl</filter-name>
+      <url-pattern/>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>BlockIfNotConnected</filter-name>
+      <url-pattern/>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>BlockIfNotAdmin</filter-name>
+      <url-pattern/>
+    </filter-mapping>
 </web-app>

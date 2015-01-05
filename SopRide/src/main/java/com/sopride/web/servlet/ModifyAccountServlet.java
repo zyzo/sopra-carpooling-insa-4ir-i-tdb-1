@@ -17,7 +17,7 @@ import com.sopride.web.util.WebUtils;
 /**
  * Servlet implementation class ModifyAccount
  */
-@WebServlet("/ModifyAccount")
+@WebServlet("/modifyaccount")
 public class ModifyAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class ModifyAccountServlet extends HttpServlet {
 			user.setPhone(Integer.parseInt(request.getParameter("phone")));
 		} catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
-			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
+			request.setAttribute("erreur2", ("Numï¿½ro de tï¿½lï¿½phone non valide"));
 			WebUtils.forward(request, response, "modifyaccount.jsp");
 		} catch (UserException e1) {
 			request.setAttribute("erreur1", e1);
