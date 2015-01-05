@@ -40,6 +40,7 @@ public class RideshareManagerServlet extends HttpServlet {
 		
 		if (user != null) {			
 			List<RideInfoBE> list = user.getRide_infos() ; 
+			request.setAttribute("user", user);
 			request.setAttribute("list", list);
 			WebUtils.forward(request, response, "manageRideshares.jsp");
 		}
