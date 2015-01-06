@@ -60,8 +60,9 @@ public class UserDAO {
 		session.beginTransaction();
 		Query query = session.getNamedQuery(UserBE.FIND_BY_EMAIL);
 		query.setParameter("email", email);
+		UserBE user = (UserBE) query.uniqueResult();
 		session.getTransaction().commit();
-		return (UserBE) query.uniqueResult();
+		return user;
 	}
 	
 	public void removeUser(int id){
@@ -84,6 +85,7 @@ public class UserDAO {
 					.setParameter("userId", user.getId());
 		BigInteger count = (BigInteger) query.uniqueResult();
 		System.out.println(count);
+		session.getTransaction().commit();
 		return count.intValue() == 1;
 	}
 }

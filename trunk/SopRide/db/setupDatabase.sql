@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `car_pooling_infos` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` char(50) NOT NULL,
-  `password` char(30) NOT NULL,
+  `password` char(150) NOT NULL,
   `last_name` char(30) DEFAULT NULL,
   `first_name` char(30) DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,

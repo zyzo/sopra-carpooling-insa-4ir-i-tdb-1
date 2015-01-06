@@ -2,6 +2,8 @@
 
 	<div class="jumbotron">
 		<div class="container"></div>
+				<br/>  <br/> 
+		
 		<h1>L'utilisateur a bien été supprimé. </h1>
 		<p class="text-right"> 
 			<a class="btn btn-default" href="/SopRide/manageaccount" role="button">
