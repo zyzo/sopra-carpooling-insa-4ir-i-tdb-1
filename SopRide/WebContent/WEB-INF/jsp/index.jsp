@@ -13,13 +13,13 @@
 	  </a> <br/> <br/>
 
       
-      <a class="btn btn-info" href="/SopRide/ModifyAccount">
+      <a class="btn btn-info" href="/SopRide/modifyaccount">
 							<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 							Modifier les informations de votre compte
 	  </a> <br/> <br/>
 	  
 	        
-      <a class="btn btn-warning" href="/SopRide/RideshareManager">
+      <a class="btn btn-warning" href="/SopRide/ridesharemanager">
 							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 							Gérer vos trajets de covoiturage
 	  </a> <br/> <br/>
