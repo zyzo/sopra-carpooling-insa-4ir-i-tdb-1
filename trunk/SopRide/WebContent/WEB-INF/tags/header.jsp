@@ -28,18 +28,19 @@
         </div>
 
         <c:choose>
-            <c:when test="${empty sessionScope.loggedInUser}" >
-                <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form" action="login" method="GET">
-                        <button type="submit" id="connectButton" class="btn btn-success">Se connecter</button>
+            <c:when test="${userCtrl.isConnected()}" >
+                <div id="navbar2" class="navbar-collapse collapse navbar-right">
+                    <a href="userProfile" id="aNavbar2">Bienvenue, ${sessionScope.loggedInUser.email}</a> <br>
+                    <form class="navbar-form navbar-right" role="form" action="disconnect" method="GET">
+                        <button type="submit" id="disconnectButton" class="btn btn-fail">Se deconnecter</button>
                     </form>
                 </div>
             </c:when>
             <c:otherwise>
-                <div id="navbar2" class="navbar-collapse collapse navbar-right">
-                    <a href="userProfile" id="aNavbar2">Welcome, ${sessionScope.loggedInUser.email}</a> <br>
-                    <form class="navbar-form navbar-right" role="form" action="disconnect" method="GET">
-                        <button type="submit" id="disconnectButton" class="btn btn-fail">Disconnect</button>
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" role="form" action="login" method="GET">
+                        <button type="submit" id="connectButton" class="btn btn-success">Se connecter</button>
                     </form>
                 </div>
             </c:otherwise>
