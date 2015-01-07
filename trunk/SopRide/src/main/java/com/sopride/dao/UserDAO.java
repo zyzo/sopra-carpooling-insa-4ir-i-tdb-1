@@ -38,7 +38,10 @@ public class UserDAO {
 			session.save(user);
 			session.getTransaction().commit();
 		}catch(ConstraintViolationException e){
+			session.getTransaction().rollback();
+
 			throw new DaoException("Email d�j� utilis�");
+			
 		}
 	}
 	
