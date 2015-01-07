@@ -4,27 +4,28 @@
       <div class="container">
       <br/>
       <h1>SopRide</h1>
-      <p>La plateforme de covoiturage des employés de Sopra </p>      
-      
+      <p>La plateforme de covoiturage des employés de Sopra </p>
 
-	 <a class="btn btn-success" href="/SopRide/ridesharePossible">
+	  <c:choose>
+	  <c:when test="${userCtrl.isConnected()}" >
+	 	<a class="btn btn-success" href="/SopRide/ridesharePossible">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							Search for Rideshare
-	  </a> <br/> <br/>
-
-      
-      <a class="btn btn-info" href="/SopRide/modifyaccount">
-							<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-							Modifier les informations de votre compte
-	  </a> <br/> <br/>
-	  
-	        
-      <a class="btn btn-warning" href="/SopRide/ridesharemanager">
+	  	</a> <br/> <br/>
+      	<a class="btn btn-info" href="/SopRide/modifyaccount">
+		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+		Modifier les informations de votre compte
+	  	</a> <br/> <br/>
+      	<a class="btn btn-warning" href="/SopRide/ridesharemanager">
 							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 							Gérer vos trajets de covoiturage
-	  </a> <br/> <br/>
+	  	</a> <br/> <br/>
 
-
+	  </c:when>
+	  <c:otherwise>
+		  <p><a class="btn btn-primary btn-lg" href="inscription" role="button">Créer un compte »</a></p>
+	  </c:otherwise>
+	  </c:choose>
 	
  </div>
     </div>
