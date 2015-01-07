@@ -2,6 +2,7 @@
 	   language="java"
        pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
+<%@attribute name="messagePanel" fragment="true" %>
 <%@attribute name="body" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
 <html>
@@ -9,7 +10,11 @@
     <div id="header">
       <jsp:invoke fragment="header"/>
     </div>
+
     <div id="body">
+      <div id="messagePanel">
+        <jsp:invoke fragment="messagePanel"/>
+      </div>
       <jsp:invoke fragment="body"/>
     </div>
     <div id="footer">

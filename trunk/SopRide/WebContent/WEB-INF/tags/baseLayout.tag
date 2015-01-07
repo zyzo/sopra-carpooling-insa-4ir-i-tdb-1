@@ -5,7 +5,11 @@
 	<jsp:attribute name="header">
 		<jsp:include  page="/WEB-INF/tags/header.jsp"/>
 	</jsp:attribute>
-	
+
+	<jsp:attribute name="messagePanel">
+			<jsp:include  page="/WEB-INF/tags/messagePanel.jsp"/>
+		</jsp:attribute>
+
 	<jsp:attribute name="body">
 		<jsp:doBody/>
 	</jsp:attribute>

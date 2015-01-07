@@ -22,4 +22,7 @@ public class WebConstants {
 
     public static final String SESSION_LOGGED_IN_USER = "loggedInUser";
     public static final String SESSION_USER_CTRL = "userCtrl";
+
+    public static final String ATT_MESSAGE_TYPE = "messageType";
+    public static final String ATT_MESSAGE_CONTENT = "messageContent";
 }

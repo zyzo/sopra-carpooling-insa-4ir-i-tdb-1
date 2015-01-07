@@ -12,7 +12,7 @@
   </jsp-config>
 
     <filter-mapping>
-      <filter-name>AddUserCtrl</filter-name>
+      <filter-name>CommonFilter</filter-name>
       <url-pattern/>
     </filter-mapping>
     <filter-mapping>
