@@ -24,7 +24,7 @@ public class WorkdayBE {
 		this.dimanche = dimanche;
 	}
 	public  WorkdayBE(){
-		
+
 	}
 	@Id
 	@GeneratedValue
@@ -98,6 +98,17 @@ public class WorkdayBE {
 	public void setId_workingdays(int id_workingdays) {
 		this.id_workingdays = id_workingdays;
 	}
-	
-	
+
+	public int toInt() {
+		int res = 0 ; 
+		if (isLundi())    res+= 1 ; 
+		if (isMardi())    res+= 10 ; 
+		if (isMercredi()) res+= 100 ; 
+		if (isJeudi())    res+= 1000 ;
+		if (isVendredi()) res+= 10000 ; 
+		if (isSamedi())   res+= 100000 ; 
+		if (isDimanche()) res+= 1000000 ;
+		return res ; 
+	}
+
 }

@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.sopride.core.beans.AddressBE;
 import com.sopride.core.beans.RideInfoBE;
@@ -29,23 +28,56 @@ import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
 /**
- * Servlet implementation class AddRideshareServlet
+ * Servlet implementation class ModifyRideshare
  */
-@WebServlet(WebConstants.PATH_ADD_RIDESHARE)
-public class AddRideshareServlet extends HttpServlet {
+@WebServlet(WebConstants.PATH_MODIFY_RIDESHARE)
+public class ModifyRideshare extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String VIEW = "addrideshare.jsp";
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
-		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
-		List<WorkplaceBE> list = DAO.getAllWorkplace();
-		request.setAttribute("user", userCtrl.getUser());
-		request.setAttribute("list", list);
-		WebUtils.forward(request, response, "addrideshare.jsp");
-
+	public static final String VIEW = "modifyrideshare.jsp";
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ModifyRideshare() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserCtrl userCtrl = (UserCtrl) request.getSession().getAttribute(WebConstants.SESSION_USER_CTRL);
+		UserBE user = userCtrl.getUser();
+
+		WorkPlaceDAO workplaceDAO = WorkPlaceDAO.getInstance();
+		List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();	
+
+
+		try{ 		
+			int id = Integer.parseInt(request.getParameter("id"));
+			RideInfoBE rideSelected = null ;   
+			List<RideInfoBE> listRideshares = user.getRide_infos() ;
+
+			for(RideInfoBE rideshare : listRideshares){
+				if (rideshare.getId() == id){
+					rideSelected = rideshare ; 
+				}
+			}
+			if (rideSelected == null) throw new Exception() ; 		
+			request.setAttribute("ride", rideSelected);				
+			request.setAttribute("user", user);	
+			request.setAttribute("list", list);
+			request.setAttribute("morningH", rideSelected.getMorning_hour()) ;
+			request.setAttribute("nightH", rideSelected.getNight_hour()) ; 		 
+			request.setAttribute("field", rideSelected.getDays()) ; 
+
+			WebUtils.forward(request, response, "modifyrideshare.jsp");
+		}
+
+		catch (Exception e) {
+			WebUtils.forward(request, response, "login.jsp");
+		}
+	} 
 
 
 	/**
@@ -53,18 +85,22 @@ public class AddRideshareServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
 		try {
-
-			// création d'un trajet
-			RideInfoBE rideInfo = new RideInfoBE() ; 
 
 			// récupération de l'utilisateur
 			UserBE user = WebUtils.getUserCtrl(request).getUser();
-			rideInfo.setUser(user);
+			
+			// récupération trajet 
+			int id = Integer.parseInt(request.getParameter("id"));
+			RideInfoBE rideInfo = null ;   
+			List<RideInfoBE> listRideshares = user.getRide_infos() ;
+			for(RideInfoBE rideshare : listRideshares){
+				if (rideshare.getId() == id){
+					rideInfo = rideshare ; 
+				}
+			}
 
 			// récupération des différentes classes pour manipuler les tables de la base de données
-			UserDAO userDAO = UserDAO.getInstance() ; 
 			WorkPlaceDAO workplaceDAO = WorkPlaceDAO.getInstance();
 			WorkdayDAO workdayDAO = WorkdayDAO.getInstance();
 			AddressDAO adressDAO = AddressDAO.getInstance();
@@ -90,22 +126,22 @@ public class AddRideshareServlet extends HttpServlet {
 			// vérification heure départ le matin et heure de départ le soir
 			Time24HoursValidator timeValidator = new Time24HoursValidator() ; 
 
-			String timeS = request.getParameter("departFJ") ;
-			if (!timeValidator.validate(timeS)) {
+			String s_timeM = request.getParameter("departFJ") ;
+			if (!timeValidator.validate(s_timeM)) {
 				throw new AddRideshareException(VIEW, "Veuillez saisir une date de la forme HH:MM") ; 
 			}		
-			String[] Tab = timeS.split(":");
-			Time time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
-			rideInfo.setNight_hour(time);
+			String[] Tab = s_timeM.split(":");
+			Time timeM =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
+			rideInfo.setNight_hour(timeM);
 
 
-			timeS = request.getParameter("departDJ") ;
-			if (!timeValidator.validate(timeS)) {
+			String s_timeS = request.getParameter("departDJ") ;
+			if (!timeValidator.validate(s_timeS)) {
 				throw new AddRideshareException(VIEW, "Veuillez saisir une date de la forme HH:MM") ; 
 			}
-			Tab = timeS.split(":");
-			time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
-			rideInfo.setMorning_hour(time);
+			Tab = s_timeS.split(":");
+			Time timeS =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
+			rideInfo.setMorning_hour(timeS);
 			/////
 
 			// récupération des checkboxes
@@ -162,21 +198,30 @@ public class AddRideshareServlet extends HttpServlet {
 
 			// insertions  dans BDD 
 
+			if (workdayBE.toInt() != rideInfo.getDays().toInt()){
+			workdayDAO.removeWorkday(rideInfo.getDays().getId_workingdays());
 			workdayDAO.registerWorkday(workdayBE);
 			rideInfo.setDays(workdayBE);
-
-			adressDAO.registerAddress(home); // enregistrement dans la BDD
-			rideInfo.setHome(home); // assignation au trajet
-
-			user.getRide_infos().add(rideInfo);
-			rideInfoDAO.registerRideInfo(rideInfo);
+			}
+			
+			if((home.getPostCode() != rideInfo.getHome().getPostCode()) || (home.getCity() != rideInfo.getHome().getCity())){
+				adressDAO.removeAddressBE(rideInfo.getHome().getId());
+				adressDAO.registerAddress(home); // enregistrement dans la BDD
+				rideInfo.setHome(home); // assignation au trajet				
+			}
+						
+			// MAJ 
+			rideInfoDAO.update(rideInfo);
 
 			// redirection
 			WebUtils.forward(request, response, "accountinfosModified.jsp");
 		}
 		catch(NumberFormatException e){
-			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 
+			throw new AbstractException("index.jsp", "Une erreur est survenue ! ", AbstractException.ERROR_TYPE) ; 
 		}
+//		catch(Exception e){
+//			throw new AbstractException("index.jsp", "Une erreur est survenue ! ", AbstractException.ERROR_TYPE) ; 
+//		}
 	} 
 
 }

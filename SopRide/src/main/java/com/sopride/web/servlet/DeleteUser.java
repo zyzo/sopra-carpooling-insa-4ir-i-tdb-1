@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.dao.UserDAO;
-import com.sopride.dao.WorkPlaceDAO;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 

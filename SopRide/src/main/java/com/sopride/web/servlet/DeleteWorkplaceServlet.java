@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopride.core.beans.UserBE;
 import com.sopride.dao.WorkPlaceDAO;
+import com.sopride.web.controller.UserCtrl;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -30,6 +32,7 @@ public class DeleteWorkplaceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
 		String id = request.getParameter("id");
 		DAO.removeWorkPlace(Integer.parseInt(id));

@@ -35,4 +35,11 @@ public class WorkdayDAO {
 		return workday;
 	}
 
+	public void removeWorkday(int id){
+		session.beginTransaction();
+		WorkdayBE wd = (WorkdayBE) session.load(WorkdayBE.class, id);
+		session.delete(wd);
+		session.getTransaction().commit();
+	}
+	
 }

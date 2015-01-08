@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 
+
 import com.sopride.core.beans.AddressBE;
+import com.sopride.core.beans.WorkplaceBE;
 
 public class AddressDAO {
 		private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -33,5 +35,11 @@ public class AddressDAO {
 			return address;
 		}
 		
+		public void removeAddressBE(int id){
+			session.beginTransaction();
+			AddressBE adr = (AddressBE) session.load(AddressBE.class, id);
+			session.delete(adr);
+			session.getTransaction().commit();
+		}
 
 }

@@ -8,12 +8,14 @@ public class WebConstants {
     public static final String PATH_DEFAULT_PAGE = "/home";
     public static final String PATH_DELETE_USER = "/deleteuser";
     public static final String PATH_DELETE_WORKPLACE = "/deleteworkplace";
+    public static final String PATH_DELETE_RIDESHARE = "/deleterideshare" ; 
     public static final String PATH_DISCONNECT = "/disconnect";
     public static final String PATH_GET_REPORT = "/report";
     public static final String PATH_MANAGE_ACCOUNT = "/manageaccount";
     public static final String PATH_MANAGE_WORKPLACE = "/manageworkplaces";
     public static final String PATH_MODIFY_ACCOUNT = "/modifyaccount";
     public static final String PATH_MODIFY_WORKPLACE = "/modifyworkplace";
+    public static final String PATH_MODIFY_RIDESHARE = "/modifyrideshare";
     public static final String PATH_REGISTER = "/inscription";
     public static final String PATH_RIDESHARE_MANAGER = "/ridesharemanager";
     public static final String PATH_RIDESHARE_POSSIBLE = "/ridesharePossible";
