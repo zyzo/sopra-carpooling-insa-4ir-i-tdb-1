@@ -5,11 +5,16 @@
 		<br/> 		
 		 <form id="modifyForm" class="form" role="form" method="POST">
 		 
+		  <div class="form-group">
+       		<label for="HomeCity">Ville de votre domicile :</label>
+          	<input name="HomeCity" type="text" id="HomeCity" class="form-control" required="required">       	
+        </div>
+       	 		 
 		 <div class="form-group">
        		<label for="HomePostcode">Code postal de votre domicile :</label>
           	<input name="HomePostcode" type="text" id="HomePostcode" class="form-control" required="required">       	
-        </div>
-       
+        </div>       
+           
        <div class="form-group">
        		<label for="workplace">Lieu de travail : </label>
        <select name="workplace">	
@@ -32,27 +37,27 @@
        <div class="form-group">               
        <label for="jours">Jours applicables : &nbsp; </label>
        <strong> 
-       <input type="checkbox" name="checkboxDay" value="lundi">  Lundi  &nbsp;               
-       <input type="checkbox" name="checkboxDay" value="mardi">  Mardi   &nbsp;    
-       <input type="checkbox" name="checkboxDay" value="mercredi">  Mercredi  &nbsp;
-       <input type="checkbox" name="checkboxDay" value="jeudi">  Jeudi  &nbsp;
-       <input type="checkbox" name="checkboxDay" value="vendredi">  Vendredi   &nbsp;
-       <input type="checkbox" name="checkboxDay" value="samedi">  Samedi  &nbsp;
-       <input type="checkbox" name="checkboxDay" value="dimanche">  Dimanche   &nbsp;     
+       <input type="checkbox" name="checkbox" value="lundi">  Lundi  &nbsp;               
+       <input type="checkbox" name="checkbox" value="mardi">  Mardi   &nbsp;    
+       <input type="checkbox" name="checkbox" value="mercredi">  Mercredi  &nbsp;
+       <input type="checkbox" name="checkbox" value="jeudi">  Jeudi  &nbsp;
+       <input type="checkbox" name="checkbox" value="vendredi">  Vendredi   &nbsp;
+       <input type="checkbox" name="checkbox" value="samedi">  Samedi  &nbsp;
+       <input type="checkbox" name="checkbox" value="dimanche">  Dimanche   &nbsp;     
        </strong>
        </div>
        
        <div class="form-group">               
        <label for="notify">Etre notifié par mail dès qu'un utilisateur informe un covoiturage similaire : &nbsp; </label>
        <strong> 
-       <input type="checkbox" name="checkboxNotify" value="notify">     
+       <input type="checkbox" name="checkbox" value="notify">     
        </strong>
        </div>
        
         <div class="form-group">               
        <label for="notify">Pouvez-vous être conducteur ? &nbsp; </label>
        <strong> 
-       <input type="checkbox" name="checkboxNotify" value="notify">  Oui   
+       <input type="checkbox" name="checkboxDriver" value="driver">  Oui   
        </strong>
        </div>
        

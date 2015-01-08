@@ -39,11 +39,10 @@ public class RideshareManagerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
 		UserBE user = userCtrl.getUser();
-		List<RideInfoBE> list = user.getRide_infos() ;
+		List<RideInfoBE> list = user.getRide_infos() ;		
 		request.setAttribute("user", user);
 		request.setAttribute("list", list);
 		WebUtils.forward(request, response, "manageRideshares.jsp");
-
 	}
 	
 

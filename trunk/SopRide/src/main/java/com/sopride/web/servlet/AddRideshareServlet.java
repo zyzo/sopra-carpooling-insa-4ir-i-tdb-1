@@ -46,25 +46,33 @@ public class AddRideshareServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// création d'un trajet
+		RideInfoBE rideInfo = new RideInfoBE() ; 
+		
+		// récupération de l'utilisateur
 		UserBE user = WebUtils.getUserCtrl(request).getUser();
+		rideInfo.setUser(user);
+		
+		// récupération des différentes classes pour manipuler les tables de la base de données
 		UserDAO userDAO = UserDAO.getInstance() ; 
-
 		WorkPlaceDAO workplaceDAO = WorkPlaceDAO.getInstance();
-		List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
-
+		WorkdayDAO workdayDAO = WorkdayDAO.getInstance();
+		AddressDAO adressDAO = AddressDAO.getInstance();
 		RideInfoDAO rideInfoDAO = RideInfoDAO.getInstance();
 
-		RideInfoBE rideInfo = new RideInfoBE() ; 
-
-		rideInfo.setUser(user);
-
-		int Postcode = Integer.parseInt(request.getParameter("HomePostcode"));
+		// création puis insertion de l'adresse de départ (maison)
+		int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
+		String city = request.getParameter("HomeCity");
 		AddressBE home = new AddressBE() ; 
-		home.setPostCode(Postcode) ;
-		AddressDAO adressDAO = AddressDAO.getInstance();
-		adressDAO.registerAddress(home);
-		rideInfo.setHome(home);
+		home.setPostCode(postcode) ;
+		home.setCity(city);
+		home.setStreet("non renseigné");		
+		adressDAO.registerAddress(home); // enregistrement dans la BDD
+		rideInfo.setHome(home); // assignation au trajet
 
+		// insertion de l'adresse d'arrivée (lieu de travail)
+		List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
 		int WorkplaceID = Integer.parseInt(request.getParameter("workplace"));
 		for(WorkplaceBE workplace : list){
 			if(workplace.getId() == WorkplaceID) {
@@ -72,80 +80,69 @@ public class AddRideshareServlet extends HttpServlet {
 			}
 		}
 
-		try { 
-			String timeS = request.getParameter("departFJ") ;
-			String[] Tab = timeS.split(":");
-			Time time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
-			rideInfo.setNight_hour(time);
+		// insertion heure départ le matin et heure de départ le soir
+		String timeS = request.getParameter("departFJ") ;
+		String[] Tab = timeS.split(":");
+		Time time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
+		rideInfo.setNight_hour(time);
 
-			timeS = request.getParameter("departDJ") ;
-			Tab = timeS.split(":");
-			time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
-			rideInfo.setMorning_hour(time);
-
-
-			String[] selectedDays = request.getParameterValues("checkboxDay");
-			WorkdayBE workdayBE = new WorkdayBE(false,false,false,false,false,false, false) ; 
-			System.out.println("affichage liste") ; 
-			for(int i = 0 ; i < selectedDays.length ; i++) {
-				System.out.println(selectedDays[i]) ; 
-				}
-			
-			
-			for(int i = 0 ; i < selectedDays.length ; i++) {
-				switch (selectedDays[i]) {
-				case "lundi":
-					System.out.println("lundi détecté") ; 
-					workdayBE.setLundi(true);
-					break;
-				case "mardi":
-					System.out.println("mardi détecté") ; 
-					workdayBE.setMardi(true);
-					break;
-				case "mercredi":
-					workdayBE.setMercredi(true);
-					break;
-				case "jeudi":
-					workdayBE.setJeudi(true);
-					break;
-				case "vendredi":
-					workdayBE.setVendredi(true);
-					break;
-				case "samedi":
-					workdayBE.setSamedi(true);
-					break;
-				case "dimanche":
-					workdayBE.setMercredi(true);
-					break;				
-				}			
+		timeS = request.getParameter("departDJ") ;
+		Tab = timeS.split(":");
+		time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
+		rideInfo.setMorning_hour(time);
+        /////
+		
+		// récupération des checkboxes
+		String[] selectedDays = request.getParameterValues("checkbox");
+		
+		// insertion des infortions relatives aux checkboxes
+		WorkdayBE workdayBE = new WorkdayBE(false,false,false,false,false,false, false) ; 
+		for(int i = 0 ; i < selectedDays.length ; i++) {
+			switch (selectedDays[i]) {
+			case "lundi":				 
+				workdayBE.setLundi(true);
+				break;
+			case "mardi": 
+				workdayBE.setMardi(true);
+				break;
+			case "mercredi":
+				workdayBE.setMercredi(true);
+				break;
+			case "jeudi":
+				workdayBE.setJeudi(true);
+				break;
+			case "vendredi":
+				workdayBE.setVendredi(true);
+				break;
+			case "samedi":
+				workdayBE.setSamedi(true);
+				break;
+			case "dimanche":
+				workdayBE.setMercredi(true);
+				break;
+			case "notify": 
+				 rideInfo.setNotify(true);
+				break;	
+			case "driver":
+				 rideInfo.setDriver(true);
+				break;	
 			}			
-			WorkdayDAO workdayDAO = WorkdayDAO.getInstance();
-			workdayDAO.registerWorkday(workdayBE);
-			
-			
-			System.out.println("setDay") ; 
-			rideInfo.setDays(workdayBE);
-			
-			
-			rideInfo.setDriver(true);
+		}					
+		workdayDAO.registerWorkday(workdayBE);
+		rideInfo.setDays(workdayBE);
 
-			//String selectedDays = request.getParameterValues("checkboxDay");
-
-
-			System.out.println("try register") ; 
-			rideInfoDAO.registerRideInfo(rideInfo);
-			System.out.println("PB") ; 
-			WebUtils.forward(request, response, "accountinfosModified.jsp");
-
-		} 
-
-		catch(Exception e) {
-
-			e.printStackTrace();
-		}
-
-
-
+		// insertion du trajet dans la BDD 
+		rideInfoDAO.registerRideInfo(rideInfo);
+		
+		// redirection
+		WebUtils.forward(request, response, "accountinfosModified.jsp");
 
 	} 
+
+	// il manque : envoi mail pour ajout de covoiturage
+	// gestion des erreurs sur  : heure , zipcode, un jour au moins sélectionné
+	//                                
+	// ENSUITE
+    // delete rideshare
+	// modify rideshare
 }

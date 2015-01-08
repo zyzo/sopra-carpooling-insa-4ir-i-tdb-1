@@ -105,6 +105,10 @@ public class RideInfoBE {
 		return user;
 	}
 	
+	public int getId() {
+		return id_carpooling_infos;
+	}
+	
 	public void setUser(UserBE user) {
 		this.user = user;
 	}
