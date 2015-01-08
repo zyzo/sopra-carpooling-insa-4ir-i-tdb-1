@@ -1,3 +1,12 @@
+body {
+	font-family : "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+}
+
+#headerLogo {
+	font-family: "Gill Sans MT";
+	font-size : 30px;
+	margin-top: 4px;
+}
 #loginForm, #loginFormExternalLinks {
 	width : 390px;
 	margin : auto;

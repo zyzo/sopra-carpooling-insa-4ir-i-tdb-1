@@ -5,10 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SopRide</title>
-    <%-- Bootstrap core CSS --%>
     <link href="res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <%-- Custom styles for this template --%>
-    <%-- <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">--%>
     <link href="res/custom/css/main.css" rel="stylesheet">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -24,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home">SopRide</a>
+            <a id="headerLogo" class="navbar-brand" href="home">SopRide</a>
         </div>
 
         <c:choose>
