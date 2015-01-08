@@ -36,12 +36,11 @@ body {
 #messagePanel {
 	width : 100%;
 	margin: 50px 0 0;
-	padding-top : 10px;
+	padding-top : 46px;
 	background-color: #eee;
 }
 
 #messagePanel > .message-block {
 	width : 500px;
 	margin: auto;
-	padding: 10px;
 }
