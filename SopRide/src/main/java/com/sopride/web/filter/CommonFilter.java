@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * This filter intercept all url request and perform some common tasks.
+ * This filter intercept all url requests and perform some common tasks.
  * For e.g :
  *  - add a UserCtrl instance to all incoming requests.
  *  - catch Exception and put message attribute in case of Exception catched.
@@ -27,11 +27,12 @@ public class CommonFilter implements Filter {
         try {
             chain.doFilter(req, resp);
         } catch (AbstractException e) {
+            e.printStackTrace();
             request.setAttribute(WebConstants.ATT_MESSAGE_TYPE, e.getMessageType());
             request.setAttribute(WebConstants.ATT_MESSAGE_CONTENT, e.getMessageContent());
             WebUtils.forward(req, resp, e.getForwardingPath());
         } catch (Exception e) {
-            request.setAttribute(WebConstants.ATT_MESSAGE_CONTENT, e.getMessage());
+            e.printStackTrace();
             WebUtils.forward(req, resp, "unknownException.jsp");
         }
     }
