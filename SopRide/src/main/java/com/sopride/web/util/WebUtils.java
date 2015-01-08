@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -31,12 +30,11 @@ public class WebUtils {
 
 	public static void sendMail(String to,String subject,String content){
 
-		// Sender's email ID needs to be mentioned
+		// Sender's email ID 
 		String from = "soprideshare@gmail.com";
-		final String username = "soprideshare@gmail.com";//change accordingly
-		final String password = "carpooling";//change accordingly
+		final String username = "soprideshare@gmail.com";
+		final String password = "carpooling";
 
-		// Assuming you are sending email through relay.jangosmtp.net
 		String host = "smtp.gmail.com";
 
 		Properties props = new Properties();

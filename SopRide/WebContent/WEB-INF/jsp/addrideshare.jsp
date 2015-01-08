@@ -6,8 +6,8 @@
 		 <form id="modifyForm" class="form" role="form" method="POST">
 		 
 		  <div class="form-group">
-       		<label for="HomeCity">Ville de votre domicile :</label>
-          	<input name="HomeCity" type="text" id="HomeCity" class="form-control" required="required">       	
+       		<label for="HomeCity">Ville de votre domicile : ${session.getAttribute("city")} </label>
+          	<input name="HomeCity" type="text" id="HomeCity" class="form-control" value="${city}" required="required">       	
         </div>
        	 		 
 		 <div class="form-group">
@@ -26,12 +26,12 @@
      
       <div class="form-group">
        <label for="departDJ">Heure de départ (début de journée) "HH:MM" : </label>
-       <input type="time" name="departDJ">       
+       <input type="time" name="departDJ" value="07:30">       
         </div>
        
         <div class="form-group">
        <label for="departFJ">Heure de départ (fin de journée) "HH:MM" :</label>
-       <input type="time" name="departFJ">
+       <input type="time" name="departFJ" value="18:25">
         </div>
        
        <div class="form-group">               

@@ -41,7 +41,7 @@ public class ConnectServlet extends HttpServlet {
         String password = req.getParameter("passwd");
         UserBE user = userDAO.findByEmail(email);
         if (user == null) {
-            throw new LoginFailedException(VIEW, "Utilisateur non trouvÃ©");
+            throw new LoginFailedException(VIEW, "Utilisateur non trouvé");
         }  else if (!user.passwordIsCorrect(password)) {
             throw new LoginFailedException(VIEW, "Mot de passe invalide");
         }
