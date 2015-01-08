@@ -39,8 +39,10 @@ public class GetReportServlet extends HttpServlet {
 		for(UserBE user : list){
 			total += user.getNumberOfConnections();
 		}
+		
 		request.setAttribute("total", total);
 		request.setAttribute("list", list);
+		request.setAttribute("nombreutilisateur", list.size());
 		WebUtils.forward(request, response, "report.jsp");
 	}
 
@@ -48,7 +50,8 @@ public class GetReportServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+
 	}
 
 }

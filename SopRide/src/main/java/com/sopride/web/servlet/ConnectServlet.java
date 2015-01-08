@@ -2,6 +2,8 @@ package com.sopride.web.servlet;
 
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +49,7 @@ public class ConnectServlet extends HttpServlet {
         req.getSession().setAttribute(WebConstants.SESSION_LOGGED_IN_USER, user);
         
         user.setNumberOfConnections(user.getNumberOfConnections()+1);
+        user.setLastConnected(new Date(Calendar.getInstance().getTimeInMillis()));
         userDAO.updateUser(user);
         req.setAttribute("user", user);
         WebUtils.forward(req, resp, "index.jsp");
