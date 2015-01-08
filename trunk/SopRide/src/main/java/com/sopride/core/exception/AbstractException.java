@@ -3,7 +3,7 @@ package com.sopride.core.exception;
 /**
  * Created by zyzo on 07/01/15.
  */
-public abstract class AbstractException extends RuntimeException {
+public class AbstractException extends RuntimeException {
 
     public static final String ERROR_TYPE = "ERROR";
     public static final String WARNING_TYPE = "WARNING";
