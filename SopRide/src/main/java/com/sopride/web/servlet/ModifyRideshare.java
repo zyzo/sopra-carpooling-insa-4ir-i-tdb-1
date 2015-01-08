@@ -19,7 +19,6 @@ import com.sopride.core.exception.AbstractException;
 import com.sopride.core.exception.AddRideshareException;
 import com.sopride.dao.AddressDAO;
 import com.sopride.dao.RideInfoDAO;
-import com.sopride.dao.UserDAO;
 import com.sopride.dao.WorkPlaceDAO;
 import com.sopride.dao.WorkdayDAO;
 import com.sopride.web.controller.UserCtrl;
@@ -32,8 +31,10 @@ import com.sopride.web.util.WebUtils;
  */
 @WebServlet(WebConstants.PATH_MODIFY_RIDESHARE)
 public class ModifyRideshare extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	public static final String VIEW = "modifyrideshare.jsp";
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -75,7 +76,7 @@ public class ModifyRideshare extends HttpServlet {
 		}
 
 		catch (Exception e) {
-			WebUtils.forward(request, response, "login.jsp");
+			throw new AbstractException("index.jsp", "Une erreur est survenue ! ", AbstractException.ERROR_TYPE) ; //			
 		}
 	} 
 
@@ -217,7 +218,7 @@ public class ModifyRideshare extends HttpServlet {
 			WebUtils.forward(request, response, "accountinfosModified.jsp");
 		}
 		catch(NumberFormatException e){
-			throw new AbstractException("index.jsp", "Une erreur est survenue ! ", AbstractException.ERROR_TYPE) ; 
+			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 
 		}
 //		catch(Exception e){
 //			throw new AbstractException("index.jsp", "Une erreur est survenue ! ", AbstractException.ERROR_TYPE) ; 
