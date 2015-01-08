@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.WorkplaceBE;
+import com.sopride.core.exception.AddressException;
 import com.sopride.dao.WorkPlaceDAO;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
@@ -60,6 +61,8 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 		
 		DAO.updateWorkPlace(workplace); 		
 		WebUtils.forward(request, response, "workplacemodified.jsp");
+		}catch(NumberFormatException e1){
+			throw new AddressException("addworkplace.jsp", "Code postal non valide");
 		} 
 		
 		catch (Exception e) {
