@@ -113,31 +113,42 @@ public class AddRideshareServlet extends HttpServlet {
 		
 		// récupération des checkboxes
 		String[] selectedDays = request.getParameterValues("checkbox");
+		if (selectedDays == null) {
+			throw new AddRideshareException(VIEW, "Veuillez saisir au moins un jour") ; 
+		}
 		
 		// insertion des infortions relatives aux checkboxes
 		WorkdayBE workdayBE = new WorkdayBE(false,false,false,false,false,false, false) ; 
+		boolean aDayAtLeastSelected = false ; 
 		for(int i = 0 ; i < selectedDays.length ; i++) {
 			switch (selectedDays[i]) {
 			case "lundi":				 
 				workdayBE.setLundi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "mardi": 
 				workdayBE.setMardi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "mercredi":
 				workdayBE.setMercredi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "jeudi":
 				workdayBE.setJeudi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "vendredi":
 				workdayBE.setVendredi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "samedi":
 				workdayBE.setSamedi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "dimanche":
 				workdayBE.setMercredi(true);
+				aDayAtLeastSelected = true ;
 				break;
 			case "notify": 
 				 rideInfo.setNotify(true);
@@ -146,7 +157,11 @@ public class AddRideshareServlet extends HttpServlet {
 				 rideInfo.setDriver(true);
 				break;	
 			}			
-		}					
+		}
+		if (aDayAtLeastSelected == false) {
+			throw new AddRideshareException(VIEW, "Veuillez saisir au moins un jour") ; 
+		}
+		
 		workdayDAO.registerWorkday(workdayBE);
 		rideInfo.setDays(workdayBE);
 
