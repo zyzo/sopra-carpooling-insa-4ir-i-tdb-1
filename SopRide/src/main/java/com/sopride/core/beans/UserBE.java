@@ -50,6 +50,7 @@ public class UserBE {
     private Date lastConnected;
 
     @OneToMany(mappedBy="user")
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})	
     private List<RideInfoBE> ride_infos;
 
     public void setId(int id) {
