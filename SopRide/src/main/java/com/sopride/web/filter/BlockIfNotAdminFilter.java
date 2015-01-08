@@ -18,7 +18,6 @@ import java.io.IOException;
                 WebConstants.PATH_MANAGE_WORKPLACE,
                 WebConstants.PATH_MANAGE_ACCOUNT,
                 WebConstants.PATH_MODIFY_WORKPLACE,
-                WebConstants.PATH_RIDESHARE_MANAGER,
         })
 public class BlockIfNotAdminFilter implements Filter {
     public void destroy() {
