@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.DaoException;
+import com.sopride.core.exception.InscriptionException;
 import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
 import com.sopride.web.util.WebConstants;
@@ -59,18 +60,15 @@ public class RegisterServlet extends HttpServlet {
 					+ email
 					+ " Votre mot de passe est : "
 					+ password );
-		} catch (UserException e1) {
-			request.setAttribute("erreur1", e1.getMessage());
-			WebUtils.forward(request, response, "register.jsp");
 		} catch(NumberFormatException e2){
-			request.setAttribute("erreur2", ("Numï¿½ro de tï¿½lï¿½phone non valide"));
-			WebUtils.forward(request, response, "register.jsp");
-			
-		} catch (DaoException e) {
+			throw new InscriptionException("register.jsp", "Numéro de téléphone non valide");	
+			} catch (DaoException e) {
 			// TODO Auto-generated catch block
-			request.setAttribute("erreur", e.getMessage());
-			WebUtils.forward(request, response, "register.jsp");
-		}
+				throw new InscriptionException("register.jsp", e.getMessage());	
+				} catch (UserException e) {
+				throw new InscriptionException("register.jsp", e.getMessage());	
+			}
 	}
+			
 
 }
