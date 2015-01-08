@@ -6,8 +6,8 @@
 		 <form id="modifyForm" class="form" role="form" method="POST">
 		 
 		  <div class="form-group">
-       		<label for="HomeCity">Ville de votre domicile : ${session.getAttribute("city")} </label>
-          	<input name="HomeCity" type="text" id="HomeCity" class="form-control" value="${city}" required="required">       	
+       		<label for="HomeCity">Ville de votre domicile :  </label>
+          	<input name="HomeCity" type="text" id="HomeCity" class="form-control" value="" required="required">       	
         </div>
        	 		 
 		 <div class="form-group">

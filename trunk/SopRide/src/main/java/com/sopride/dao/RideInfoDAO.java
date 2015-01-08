@@ -5,11 +5,7 @@ import java.sql.Time;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.sopride.core.beans.AddressBE;
 import com.sopride.core.beans.RideInfoBE;
-import com.sopride.core.beans.UserBE;
-import com.sopride.core.beans.WorkdayBE;
-import com.sopride.core.beans.WorkplaceBE;
 
 public class RideInfoDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -39,8 +35,22 @@ public class RideInfoDAO {
 		return rideinfo;
 	}
 	
+	public void removeRideshare(int id){
+		session.beginTransaction();
+		RideInfoBE rideshare = (RideInfoBE) session.load(RideInfoBE.class, id);
+		session.delete(rideshare);
+		session.getTransaction().commit();
+	}
+	
 	public static void main(String[] argc){
 		RideInfoBE rideinfo = RideInfoDAO.getInstance().getRideInfo(2);
+	}
+
+	public void update(RideInfoBE rideInfo) {
+		session.beginTransaction();
+		RideInfoBE rideshare = (RideInfoBE) session.load(RideInfoBE.class, rideInfo.getId());
+		session.update(rideshare);
+		session.getTransaction().commit();
 	}
 	
 

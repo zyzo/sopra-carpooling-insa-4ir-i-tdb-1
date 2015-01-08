@@ -34,9 +34,10 @@ public class ModifyAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		UserBE user = (UserBE) request.getSession().getAttribute(WebConstants.SESSION_LOGGED_IN_USER);
-	
+		
+		UserCtrl userCtrl = (UserCtrl) request.getSession().getAttribute(WebConstants.SESSION_USER_CTRL);
+		UserBE user = userCtrl.getUser();
+		
 		if (user != null) {			
 			request.setAttribute("user", user);
 			WebUtils.forward(request, response, "modifyaccount.jsp");

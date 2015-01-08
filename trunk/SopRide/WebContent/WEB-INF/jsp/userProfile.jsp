@@ -9,9 +9,9 @@
         
        <label for="lastname">Nom :  ${user.last_name} </label> <br/> 
               
-      <label for="firstname">Prï¿½nom : ${user.first_name} </label> <br/> 
+      <label for="firstname">Prénom : ${user.first_name} </label> <br/> 
           	       
-       <label for="phone">Tï¿½lï¿½phone : ${user.phone}</label> <br/>  <br/>
+       <label for="phone">Téléphone : ${user.phone}</label> <br/>  <br/>
        
       
       <a class="btn btn-info" href="modifyaccount">

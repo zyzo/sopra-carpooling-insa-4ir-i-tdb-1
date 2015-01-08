@@ -6,6 +6,7 @@ import com.sopride.web.util.WebUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+
 import java.io.IOException;
 
 /**
@@ -24,9 +25,11 @@ import java.io.IOException;
                 WebConstants.PATH_MANAGE_WORKPLACE,
                 WebConstants.PATH_MODIFY_ACCOUNT,
                 WebConstants.PATH_MODIFY_WORKPLACE,
+                WebConstants.PATH_MODIFY_RIDESHARE, 
                 WebConstants.PATH_RIDESHARE_MANAGER,
                 WebConstants.PATH_RIDESHARE_POSSIBLE,
                 WebConstants.PATH_USER_PROFILE,
+                WebConstants.PATH_DELETE_WORKPLACE
             })
 public class BlockIfNotConnectedFilter implements Filter {
 

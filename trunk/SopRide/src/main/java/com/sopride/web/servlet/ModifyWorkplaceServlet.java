@@ -33,7 +33,7 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
+		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();	
 		String id = request.getParameter("id");
 		WorkplaceBE workplace = DAO.getWorkplace(Integer.parseInt(id)); 
 		request.setAttribute("workplace", workplace);
