@@ -29,7 +29,8 @@ import java.io.IOException;
                 WebConstants.PATH_RIDESHARE_MANAGER,
                 WebConstants.PATH_RIDESHARE_POSSIBLE,
                 WebConstants.PATH_USER_PROFILE,
-                WebConstants.PATH_DELETE_WORKPLACE
+                WebConstants.PATH_DELETE_WORKPLACE,
+                WebConstants.PATH_DISCONNECT,
             })
 public class BlockIfNotConnectedFilter implements Filter {
 
