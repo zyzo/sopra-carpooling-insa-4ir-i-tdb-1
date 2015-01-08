@@ -35,12 +35,12 @@
         
         <div class="form-group">
        		<label for="newpwd">Nouveau mot de passe : </label>
-          	<input name="newpwd" type="password" id="newpwd" value="${user.password}" class="form-control" required="required">       	
+          	<input name="newpwd" type="password" id="newpwd" value="" class="form-control" >       	
         </div>
         
         <div class="form-group">
        		<label for="newpwdconf">Confirmez votre nouveau mot de passe : </label>
-          	<input name="newpwdconf" type="password" id="newpwdconf" value="${user.password}"  class="form-control" required="required">       	
+          	<input name="newpwdconf" type="password" id="newpwdconf" value=""  class="form-control">       	
         </div>
      </div> 
           
