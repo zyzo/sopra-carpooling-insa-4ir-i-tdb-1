@@ -55,9 +55,9 @@ public class RegisterServlet extends HttpServlet {
 			WebUtils.forward(request, response, "registerdone.jsp");		
 			WebUtils.sendMail(email, "Inscription SoprideShare", 
 					"Merci pour votre inscription sur l'application SopRideShare." 
-					+"/n Votre email est : "
+					+" Votre email est : "
 					+ email
-					+ "/n Votre mot de passe est : "
+					+ " Votre mot de passe est : "
 					+ password );
 		} catch (UserException e1) {
 			request.setAttribute("erreur1", e1.getMessage());
