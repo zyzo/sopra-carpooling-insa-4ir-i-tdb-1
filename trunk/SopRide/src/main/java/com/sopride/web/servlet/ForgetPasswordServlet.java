@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.exception.NoUserEmailException;
 import com.sopride.dao.UserDAO;
+import com.sopride.web.util.RandomUtil;
 import com.sopride.web.util.WebUtils;
 
 /**
@@ -42,13 +43,15 @@ public class ForgetPasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
 		UserDAO DAO = UserDAO.getInstance();
-		System.out.println(email);
 		UserBE User = DAO.findByEmail(email);
 		if(User == null){
 			throw new NoUserEmailException("forgetPassword.jsp", "Il n'existe aucun utilisateur avec cet email");
 		}
 		else{
-		WebUtils.sendMail(email, "Mot de passe oublié", "Voici votre mail : " + email + "\n mot de passe : " + User.getPassword());;
+		String newpassword = RandomUtil.randomString(10);
+		User.setPassword(newpassword); 
+		WebUtils.sendMail(email, "Mot de passe oublié", "Voici votre mail : " + email + "\n et votre nouveau mot de passe :" + newpassword
+				);;
 		WebUtils.forward(request, response,"mailSent.jsp" );
 		}
 	}
