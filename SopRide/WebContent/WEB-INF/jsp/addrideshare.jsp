@@ -1,9 +1,8 @@
 <t:baseLayout>
 	<div class="jumbotron">
 		<div class="container">	
-		
-		<br/> <br/>
-		
+		<h2> Ajouter un trajet de covoiturage </h2>
+		<br/> 		
 		 <form id="modifyForm" class="form" role="form" method="POST">
 		 
 		 <div class="form-group">
@@ -21,25 +20,25 @@
         </div>
      
       <div class="form-group">
-       <label for="departDJ">Heure de départ (début de journée) : </label>
-       <input type="time" name="departDJ">
+       <label for="departDJ">Heure de départ (début de journée) "HH:MM" : </label>
+       <input type="time" name="departDJ">       
         </div>
        
         <div class="form-group">
-       <label for="departFJ">Heure de départ (fin de journée) :</label>
+       <label for="departFJ">Heure de départ (fin de journée) "HH:MM" :</label>
        <input type="time" name="departFJ">
         </div>
        
        <div class="form-group">               
        <label for="jours">Jours applicables : &nbsp; </label>
        <strong> 
-       <input type="checkbox" name="checkboxLundi" value="lundi">  Lundi  &nbsp;               
-       <input type="checkbox" name="checkboxMardi" value="mardi">  Mardi   &nbsp;    
-       <input type="checkbox" name="checkboxMercredi" value="mercredi">  Mercredi  &nbsp;
-       <input type="checkbox" name="checkboxJeudi" value="jeudi">  Jeudi  &nbsp;
-       <input type="checkbox" name="checkboxVendredi" value="vendredi">  Vendredi   &nbsp;
-       <input type="checkbox" name="checkboxSamedi" value="samedi">  Samedi  &nbsp;
-       <input type="checkbox" name="checkboxDimanche" value="dimanche">  Dimanche   &nbsp;     
+       <input type="checkbox" name="checkboxDay" value="lundi">  Lundi  &nbsp;               
+       <input type="checkbox" name="checkboxDay" value="mardi">  Mardi   &nbsp;    
+       <input type="checkbox" name="checkboxDay" value="mercredi">  Mercredi  &nbsp;
+       <input type="checkbox" name="checkboxDay" value="jeudi">  Jeudi  &nbsp;
+       <input type="checkbox" name="checkboxDay" value="vendredi">  Vendredi   &nbsp;
+       <input type="checkbox" name="checkboxDay" value="samedi">  Samedi  &nbsp;
+       <input type="checkbox" name="checkboxDay" value="dimanche">  Dimanche   &nbsp;     
        </strong>
        </div>
        
