@@ -9,18 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sopride.core.beans.AddressBE;
 import com.sopride.core.beans.RideInfoBE;
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkdayBE;
 import com.sopride.core.beans.WorkplaceBE;
+import com.sopride.core.exception.AddRideshareException;
 import com.sopride.dao.AddressDAO;
 import com.sopride.dao.RideInfoDAO;
 import com.sopride.dao.UserDAO;
 import com.sopride.dao.WorkPlaceDAO;
 import com.sopride.dao.WorkdayDAO;
 import com.sopride.web.controller.UserCtrl;
+import com.sopride.web.util.Time24HoursValidator;
 import com.sopride.web.util.WebConstants;
 import com.sopride.web.util.WebUtils;
 
@@ -30,7 +33,9 @@ import com.sopride.web.util.WebUtils;
 @WebServlet(WebConstants.PATH_ADD_RIDESHARE)
 public class AddRideshareServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	public static final String VIEW = "addrideshare.jsp";
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
@@ -47,6 +52,9 @@ public class AddRideshareServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		try {
+		
 		// création d'un trajet
 		RideInfoBE rideInfo = new RideInfoBE() ; 
 		
@@ -62,12 +70,14 @@ public class AddRideshareServlet extends HttpServlet {
 		RideInfoDAO rideInfoDAO = RideInfoDAO.getInstance();
 
 		// création puis insertion de l'adresse de départ (maison)
+				 
 		int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
-		String city = request.getParameter("HomeCity");
+		String city = request.getParameter("HomeCity");		
 		AddressBE home = new AddressBE() ; 
 		home.setPostCode(postcode) ;
 		home.setCity(city);
-		home.setStreet("non renseigné");		
+		home.setStreet("non renseigné");
+		
 		adressDAO.registerAddress(home); // enregistrement dans la BDD
 		rideInfo.setHome(home); // assignation au trajet
 
@@ -81,12 +91,21 @@ public class AddRideshareServlet extends HttpServlet {
 		}
 
 		// insertion heure départ le matin et heure de départ le soir
+		Time24HoursValidator timeValidator = new Time24HoursValidator() ; 
+		
 		String timeS = request.getParameter("departFJ") ;
+		if (!timeValidator.validate(timeS)) {
+			throw new AddRideshareException(VIEW, "Veuillez saisir une date de la forme HH:MM") ; 
+		}		
 		String[] Tab = timeS.split(":");
 		Time time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
 		rideInfo.setNight_hour(time);
 
+		
 		timeS = request.getParameter("departDJ") ;
+		if (!timeValidator.validate(timeS)) {
+			throw new AddRideshareException(VIEW, "Veuillez saisir une date de la forme HH:MM") ; 
+		}
 		Tab = timeS.split(":");
 		time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
 		rideInfo.setMorning_hour(time);
@@ -133,12 +152,16 @@ public class AddRideshareServlet extends HttpServlet {
 
 		// insertion du trajet dans la BDD 
 		user.getRide_infos().add(rideInfo);
-
+        		
 		rideInfoDAO.registerRideInfo(rideInfo);
 		
 		// redirection
 		WebUtils.forward(request, response, "accountinfosModified.jsp");
-
+	}
+	catch(NumberFormatException e){
+		throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 
+	}
+		
 	} 
 
 	// il manque : envoi mail pour ajout de covoiturage
