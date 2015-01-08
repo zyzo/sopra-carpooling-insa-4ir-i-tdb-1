@@ -42,6 +42,8 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserBE user = new UserBE();
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		user.setEmail(request.getParameter("email"));
 		user.setFirst_name(request.getParameter("first_name"));
 		user.setLast_name(request.getParameter("last_name"));
@@ -59,6 +61,12 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			UserDAO.getInstance().registerUser(user);
 			WebUtils.forward(request, response, "registerdone.jsp");		
+			WebUtils.sendMail(email, "Inscription SoprideShare", 
+					"Merci pour votre inscription sur l'application SopRideShare." 
+					+"/n Votre email est : "
+					+ email
+					+ "/n Votre mot de passe est : "
+					+ password );
 
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
