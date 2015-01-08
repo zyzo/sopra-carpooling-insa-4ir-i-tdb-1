@@ -132,6 +132,8 @@ public class AddRideshareServlet extends HttpServlet {
 		rideInfo.setDays(workdayBE);
 
 		// insertion du trajet dans la BDD 
+		user.getRide_infos().add(rideInfo);
+
 		rideInfoDAO.registerRideInfo(rideInfo);
 		
 		// redirection
