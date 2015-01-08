@@ -43,29 +43,108 @@ public class SearchForRideshare extends HttpServlet {
 		List<UserBE> list = DAO.getAllUser();
 		
 		//int num_user = user.getRide_infos().indexOf(user);
+		if (user.getRide_infos().isEmpty()){
+			WebUtils.forward(request, response, "rideshareNotPossible.jsp");
+
+		}else{
 		RideInfoBE info_user = user.getRide_infos().get(0);//.get(num_user);
 		
-		
+		int heure_depart = info_user.getMorning_hour().getHours();
+		int minute_depart = info_user.getMorning_hour().getMinutes();
 		int postcode = info_user.getHome().getPostCode();
 		WorkplaceBE workplace = info_user.getCar_pooling_workplace();
 		
-			List<UserBE> matches_list = new ArrayList<UserBE>();
+			List<UserBE> matches_list_lundi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_mardi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_mercredi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_jeudi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_vendredi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_samedi = new ArrayList<UserBE>();
+			List<UserBE> matches_list_dimanche = new ArrayList<UserBE>();
 			for(UserBE user_aux : list){
 				if(user_aux != user){
 				//int num_user_aux = user.getRide_infos().indexOf(user_aux);
 				RideInfoBE info = user.getRide_infos().get(0);
-				if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
-					matches_list.add(user_aux);
+				if(heure_depart == info.getMorning_hour().getHours() || (heure_depart-1==info.getMorning_hour().getHours() && minute_depart<=info.getMorning_hour().getMinutes()) || (heure_depart+1==info.getMorning_hour().getHours() && minute_depart>=info.getMorning_hour().getMinutes())){
+					if(heure_depart == info.getNight_hour().getHours() || (heure_depart-1==info.getNight_hour().getHours() && minute_depart<=info.getNight_hour().getMinutes()) || (heure_depart+1==info.getNight_hour().getHours() && minute_depart>=info.getNight_hour().getMinutes())){
+						if (info_user.getDays().isLundi()){
+							if(info.getDays().isLundi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+									matches_list_lundi.add(user_aux);
+					
+									
+								}						
+							}
+						}
+						if (info_user.getDays().isMardi()){
+							if(info.getDays().isMardi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+									matches_list_mardi.add(user_aux);
+									
+								}						
+							}
+						}
+						if (info_user.getDays().isMercredi()){
+							if(info.getDays().isMercredi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+									matches_list_mercredi.add(user_aux);
+																
+								}						
+							}
+						}
+						if (info_user.getDays().isJeudi()){
+							if(info.getDays().isJeudi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+									matches_list_jeudi.add(user_aux);
+									
+								}						
+							}
+						}
+						if (info_user.getDays().isVendredi()){
+							if(info.getDays().isVendredi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+										matches_list_vendredi.add(user_aux);
+									
+								}						
+							}
+						}
+							
+						if (info_user.getDays().isSamedi()){
+							if(info.getDays().isSamedi()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+									matches_list_samedi.add(user_aux);
+								
+								}						
+							}
+						}
+						if (info_user.getDays().isDimanche()){
+							if(info.getDays().isDimanche()){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+										matches_list_dimanche.add(user_aux);
+						
+									
+								}						
+							}
+						}
+					}
+
+					
 				}
 				}
-			}
-			request.setAttribute("list", matches_list);
-			if(matches_list != null){
+				
+				}
+						
+			request.setAttribute("list_lundi", matches_list_lundi);
+			request.setAttribute("list_mardi", matches_list_mardi);
+			request.setAttribute("list_mercredi", matches_list_mercredi);
+			request.setAttribute("list_jeudi", matches_list_jeudi);
+			request.setAttribute("list_vendredi", matches_list_vendredi);
+			request.setAttribute("list_samedi", matches_list_samedi);
+			request.setAttribute("list_dimanche", matches_list_dimanche);
 			WebUtils.forward(request, response, "ridesharePossible.jsp");
-			}
-			else{
-				WebUtils.forward(request, response, "rideshareNotPossible.jsp");
-			}
+			
+		}
+				
 	}
 
 	/**
