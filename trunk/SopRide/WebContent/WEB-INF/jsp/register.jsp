@@ -5,7 +5,7 @@
 		 <form id="inscription" class="form" role="form" method="POST">
         <div class="form-group">
        		<label for="email">Addresse électronique :</label>
-          	<input name="email" type="text" id="email" class="form-control" required="required">       	
+          	<input name="email" type="email" id="email" class="form-control" required="required">       	
         </div>
         <div class="form-group">
        		<label for="last_name">Nom : </label>
