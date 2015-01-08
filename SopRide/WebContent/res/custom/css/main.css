@@ -43,10 +43,5 @@ body {
 #messagePanel > .message-block {
 	width : 500px;
 	margin: auto;
-	border-radius: 9px;
 	padding: 10px;
-}
-
-#error-block {
-	background-color: rgba(255, 0, 0, 0.38);
 }
