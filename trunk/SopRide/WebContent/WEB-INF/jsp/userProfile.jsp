@@ -14,7 +14,7 @@
        <label for="phone">Téléphone : ${user.phone}</label> <br/>  <br/>
        
       
-      <a class="btn btn-info" href="/SopRide/ModifyAccount">
+      <a class="btn btn-info" href="/SopRide/modifyaccount">
 							<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 							Modifier les informations de votre compte
 	  </a>

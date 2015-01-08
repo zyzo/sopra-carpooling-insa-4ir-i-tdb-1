@@ -59,7 +59,7 @@ public class ModifyAccountServlet extends HttpServlet {
 			user.setPhone(Integer.parseInt(request.getParameter("phone")));
 		} catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
-			request.setAttribute("erreur2", ("Numï¿½ro de tï¿½lï¿½phone non valide"));
+			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
 			WebUtils.forward(request, response, "modifyaccount.jsp");
 		} catch (UserException e1) {
 			request.setAttribute("erreur1", e1);
@@ -68,7 +68,7 @@ public class ModifyAccountServlet extends HttpServlet {
 
 		try{ 
 			if (!request.getParameter("prevpwd").equals("")) {
-				if (request.getParameter("prevpwd").equals(user.getPassword())){
+				if (user.passwordIsCorrect(request.getParameter("prevpwd"))){
 					if (request.getParameter("newpwd").equals(request.getParameter("newpwdconf"))){
 						user.setPassword(request.getParameter("newpwdconf"));
 					}
