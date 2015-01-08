@@ -49,16 +49,8 @@ public class RegisterServlet extends HttpServlet {
 		user.setLast_name(request.getParameter("last_name"));
 		try {
 			user.setPhone(Integer.parseInt(request.getParameter("phone")));
-		} catch (UserException e1) {
-			request.setAttribute("erreur1", e1.getMessage());
-			WebUtils.forward(request, response, "register.jsp");
-		} catch(NumberFormatException e2){
-			request.setAttribute("erreur2", ("Num�ro de t�l�phone non valide"));
-			WebUtils.forward(request, response, "register.jsp");
+			user.setPassword(request.getParameter("password"));
 			
-		}
-		user.setPassword(request.getParameter("password"));
-		try {
 			UserDAO.getInstance().registerUser(user);
 			WebUtils.forward(request, response, "registerdone.jsp");		
 			WebUtils.sendMail(email, "Inscription SoprideShare", 
@@ -67,7 +59,13 @@ public class RegisterServlet extends HttpServlet {
 					+ email
 					+ "/n Votre mot de passe est : "
 					+ password );
-
+		} catch (UserException e1) {
+			request.setAttribute("erreur1", e1.getMessage());
+			WebUtils.forward(request, response, "register.jsp");
+		} catch(NumberFormatException e2){
+			request.setAttribute("erreur2", ("Num�ro de t�l�phone non valide"));
+			WebUtils.forward(request, response, "register.jsp");
+			
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("erreur", e.getMessage());
