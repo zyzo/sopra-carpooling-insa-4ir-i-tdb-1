@@ -112,11 +112,11 @@ public class ModifyRideshare extends HttpServlet {
 			String address = request.getParameter("HomeAddress");
 			int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
 			String city = request.getParameter("HomeCity");		
-			AddressBE home = new AddressBE() ; 
+			AddressBE home =rideInfo.getHome() ; 
 			home.setPostCode(postcode) ;
 			home.setCity(city);
 			home.setStreet(address);
-
+			
 			// détermination de l'adresse d'arrivée (lieu de travail)
 			List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
 			int WorkplaceID = Integer.parseInt(request.getParameter("workplace"));
@@ -154,7 +154,7 @@ public class ModifyRideshare extends HttpServlet {
 			}
 
 			// insertion des infortions relatives aux checkboxes
-			WorkdayBE workdayBE = new WorkdayBE(false,false,false,false,false,false, false) ; 
+			WorkdayBE workdayBE = rideInfo.getDays() ; 
 			boolean aDayAtLeastSelected = false ; 
 			for(int i = 0 ; i < selectedDays.length ; i++) {
 				switch (selectedDays[i]) {
@@ -201,17 +201,17 @@ public class ModifyRideshare extends HttpServlet {
 
 			// insertions  dans BDD 
 
-			if (workdayBE.toInt() != rideInfo.getDays().toInt()){
-			workdayDAO.removeWorkday(rideInfo.getDays().getId_workingdays());
-			workdayDAO.registerWorkday(workdayBE);
-			rideInfo.setDays(workdayBE);
-			}
+			//if (workdayBE.toInt() != rideInfo.getDays().toInt()){
+			//workdayDAO.removeWorkday(rideInfo.getDays().getId_workingdays());
+			//workdayDAO.registerWorkday(workdayBE);
+			//rideInfo.setDays(workdayBE);
+			//}
 			
-			if((home.getPostCode() != rideInfo.getHome().getPostCode()) || (home.getCity() != rideInfo.getHome().getCity())){
-				adressDAO.removeAddressBE(rideInfo.getHome().getId());
-				adressDAO.registerAddress(home); // enregistrement dans la BDD
-				rideInfo.setHome(home); // assignation au trajet				
-			}
+			//if((home.getPostCode() != rideInfo.getHome().getPostCode()) || (home.getCity() != rideInfo.getHome().getCity())){
+			//	adressDAO.removeAddressBE(rideInfo.getHome().getId());
+			//	adressDAO.registerAddress(home); // enregistrement dans la BDD
+			//	rideInfo.setHome(home); // assignation au trajet				
+			//}
 						
 			// MAJ 
 			rideInfoDAO.update(rideInfo);

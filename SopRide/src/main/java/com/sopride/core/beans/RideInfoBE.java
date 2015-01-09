@@ -23,7 +23,7 @@ public class RideInfoBE {
 	
 	@OneToOne
 	@JoinColumn(name="home")
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private AddressBE home;
 	@ManyToOne
 	@JoinColumn(name="id_user")
@@ -37,7 +37,7 @@ public class RideInfoBE {
 	private Time night_hour;
 	@OneToOne
 	@JoinColumn(name="days")
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.ALL})	
 	private WorkdayBE days;
 	@Type(type="boolean")
 	@Column(name="notify")
