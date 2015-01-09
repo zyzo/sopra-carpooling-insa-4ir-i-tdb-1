@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+import com.sopride.core.beans.RideInfoBE;
 import com.sopride.core.beans.UserBE;
 import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.core.exception.DaoException;
@@ -65,12 +66,17 @@ public class UserDAO {
 		query.setParameter("email", email);
 		UserBE user = (UserBE) query.uniqueResult();
 		session.getTransaction().commit();
+		
 		return user;
 	}
 	
 	public void removeUser(int id){
 		session.beginTransaction();
 		UserBE user = (UserBE)session.load(UserBE.class, id);
+		RideInfoDAO DAO = RideInfoDAO.getInstance();
+		for (RideInfoBE ri : user.getRide_infos()){
+			DAO.removeRideshare(ri.getId());
+		}
 		session.delete(user);
 		session.getTransaction().commit();
 	}
