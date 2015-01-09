@@ -15,7 +15,10 @@
 						<a class="btn btn-danger" href="/SopRide/deleteworkplace?id=${workplace.id }">
 							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 							Supprimer
-						</a></li>
+						</a>
+					
+						</li>
+						<br>
 
 				</c:forEach>
 			</ul>
