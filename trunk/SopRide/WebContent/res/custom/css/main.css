@@ -44,3 +44,13 @@ body {
 	width : 500px;
 	margin: auto;
 }
+
+#reportPage {
+	margin : auto;
+	padding: 0 0 62px;
+}
+
+#reportPage > .panel{
+	width : 700px;
+	margin : auto;
+}

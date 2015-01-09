@@ -1,8 +1,8 @@
 <t:baseLayout>
   <div class="jumbotron">
     <div class="container">
-      <div class="centerMessage">
-        <h4>Erreur bizarre survenue. Veuillez reessayez plus tard. </h4>
+      <div class="text-center text-danger">
+        <h4>Erreur inconnue . Veuillez reessayez plus tard. </h4>
       </div>
     </div>
   </div>
