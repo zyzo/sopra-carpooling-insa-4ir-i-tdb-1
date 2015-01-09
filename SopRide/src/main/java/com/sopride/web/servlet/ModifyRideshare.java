@@ -109,12 +109,13 @@ public class ModifyRideshare extends HttpServlet {
 			RideInfoDAO rideInfoDAO = RideInfoDAO.getInstance();
 
 			// création/vérification ZipCode de l'adresse de départ (maison)		 
+			String address = request.getParameter("HomeAddress");
 			int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
 			String city = request.getParameter("HomeCity");		
 			AddressBE home = new AddressBE() ; 
 			home.setPostCode(postcode) ;
 			home.setCity(city);
-			home.setStreet("non renseigné");
+			home.setStreet(address);
 
 			// détermination de l'adresse d'arrivée (lieu de travail)
 			List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();

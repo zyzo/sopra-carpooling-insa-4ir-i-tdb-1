@@ -6,6 +6,13 @@
 			<form id="modifyForm" class="form" role="form" method="POST">
 
 				<div class="form-group">
+					<label for="HomeAddress">Adresse de votre domicile : </label> <input
+						name="HomeAddress" type="text" id="HomeAddress" class="form-control"
+						required="required" value="${address1}">
+				</div>
+
+
+				<div class="form-group">
 					<label for="HomeCity">Ville de votre domicile : </label> <input
 						name="HomeCity" type="text" id="HomeCity" class="form-control"
 						required="required" value="${city1}">
@@ -29,8 +36,7 @@
 
 				<div class="form-group">
 					<label for="departDJ">Heure de départ (début de journée)
-						"HH:MM" : </label> <input type="time" name="departDJ"
-						value="07:30">
+						"HH:MM" : </label> <input type="time" name="departDJ" value="07:30">
 				</div>
 
 				<div class="form-group">

@@ -25,7 +25,7 @@
 			<p>
 				<a class="btn btn-errror" href="manageworkplaces">
 					<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-					Gérer les postes de travail
+					Gérer les lieux de travail
 				</a>
 			</p>
 			<p>
