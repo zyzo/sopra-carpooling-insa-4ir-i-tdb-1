@@ -10,6 +10,7 @@ import com.sopride.dao.CryptUtil;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -50,8 +51,8 @@ public class UserBE {
     private Date lastConnected;
 
     @OneToMany(mappedBy="user")
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})	
-    private List<RideInfoBE> ride_infos;
+	//@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})	
+    private List<RideInfoBE> ride_infos = new ArrayList<RideInfoBE>();
 
     public void setId(int id) {
         this.id = id;
