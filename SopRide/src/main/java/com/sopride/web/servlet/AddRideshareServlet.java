@@ -83,6 +83,10 @@ public class AddRideshareServlet extends HttpServlet {
 			// détermination de l'adresse d'arrivée (lieu de travail)
 			List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
 			int WorkplaceID = Integer.parseInt(request.getParameter("workplace"));
+			if ((list == null) || list.isEmpty()){
+				throw new AddRideshareException(VIEW, "Aucun lieu de travail disponible") ; 
+				
+			}
 			for(WorkplaceBE workplace : list){
 				if(workplace.getId() == WorkplaceID) {
 					rideInfo.setCar_pooling_workplace(workplace);
