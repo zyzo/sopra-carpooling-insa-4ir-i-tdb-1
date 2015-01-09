@@ -50,8 +50,8 @@ public class ForgetPasswordServlet extends HttpServlet {
 		else{
 		String newpassword = RandomUtil.randomString(10);
 		User.setPassword(newpassword); 
-		WebUtils.sendMail(email, "Mot de passe oublié", "Voici votre mail : " + email + "\n et votre nouveau mot de passe :" + newpassword
-				);;
+		WebUtils.sendMailHTML(email, "Mot de passe oublié", "<h1> Récupération du mot de passe : </h1> <h3>Voici votre mail : " + email + "</h3> <h3>Votre nouveau mot de passe : " + newpassword
+				+"</h3>");
 		WebUtils.forward(request, response,"mailSent.jsp" );
 		}
 	}
