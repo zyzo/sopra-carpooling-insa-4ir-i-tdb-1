@@ -47,6 +47,7 @@ public class SearchForRideshare extends HttpServlet {
 
 		}else{
 			
+		//for(RideInfoBE info_user : user.getRide_infos()){
 		RideInfoBE info_user = user.getRide_infos().get(0);
 		
 		int heure_depart_matin = info_user.getMorning_hour().getHours();
@@ -64,7 +65,7 @@ public class SearchForRideshare extends HttpServlet {
 			List<UserBE> matches_list_dimanche = new ArrayList<UserBE>();
 			
 			for(UserBE user_aux : list){
-				if(user_aux != user){
+				if(user_aux != user && (user_aux.getRide_infos().size() > 0)){
 				RideInfoBE info = user_aux.getRide_infos().get(0);
 				if(((info.getMorning_hour().getHours() - 1)<= heure_depart_matin) && (heure_depart_matin <= info.getMorning_hour().getHours() + 1 )){
 					if(((info.getNight_hour().getHours() - 1)<= heure_depart_soir) && (heure_depart_soir <= info.getNight_hour().getHours() + 1 )){
@@ -134,7 +135,7 @@ public class SearchForRideshare extends HttpServlet {
 			request.setAttribute("list_samedi", matches_list_samedi);
 			request.setAttribute("list_dimanche", matches_list_dimanche);
 			WebUtils.forward(request, response, "ridesharePossible.jsp");
-			
+		//}
 		}
 				
 	}
