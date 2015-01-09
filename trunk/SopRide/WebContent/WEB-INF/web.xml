@@ -8,7 +8,6 @@
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/WEB-INF/tags/tagLib.jsp</include-prelude>
-      <page-encoding>UTF-8</page-encoding>
     </jsp-property-group>
   </jsp-config>
 
