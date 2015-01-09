@@ -42,6 +42,8 @@ public class SearchForRideshare extends HttpServlet {
 		UserDAO DAO = UserDAO.getInstance();
 		List<UserBE> list = DAO.getAllUser();
 		
+		
+		
 		if (user.getRide_infos().isEmpty()){
 			WebUtils.forward(request, response, "rideshareNotPossible.jsp");
 
@@ -52,7 +54,9 @@ public class SearchForRideshare extends HttpServlet {
 		
 		int heure_depart_matin = info_user.getMorning_hour().getHours();
 		int heure_depart_soir = info_user.getNight_hour().getHours();
-		//int minute_depart = info_user.getMorning_hour().getMinutes();
+		int minute_depart = info_user.getMorning_hour().getMinutes();
+		int minute_depart_soir = info_user.getNight_hour().getMinutes();
+
 		int postcode = info_user.getHome().getPostCode();
 		WorkplaceBE workplace = info_user.getCar_pooling_workplace();
 		
@@ -67,8 +71,8 @@ public class SearchForRideshare extends HttpServlet {
 			for(UserBE user_aux : list){
 				if(user_aux != user && (user_aux.getRide_infos().size() > 0)){
 				RideInfoBE info = user_aux.getRide_infos().get(0);
-				if(((info.getMorning_hour().getHours() - 1)<= heure_depart_matin) && (heure_depart_matin <= info.getMorning_hour().getHours() + 1 )){
-					if(((info.getNight_hour().getHours() - 1)<= heure_depart_soir) && (heure_depart_soir <= info.getNight_hour().getHours() + 1 )){
+				if(heure_depart_matin == info.getMorning_hour().getHours() || (heure_depart_matin-1==info.getMorning_hour().getHours() && minute_depart <= info.getMorning_hour().getMinutes()) || (heure_depart_matin+1==info.getMorning_hour().getHours() && minute_depart >=info.getMorning_hour().getMinutes())){
+					if(heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes())){
 						if (info_user.getDays().isLundi()){
 							if(info.getDays().isLundi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
