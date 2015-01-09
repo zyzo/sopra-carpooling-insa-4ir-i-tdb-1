@@ -47,7 +47,7 @@ public class SearchForRideshare extends HttpServlet {
 
 		}else{
 			
-		RideInfoBE info_user = user.getRide_infos().get(0);//.get(num_user);
+		RideInfoBE info_user = user.getRide_infos().get(0);
 		
 		int heure_depart_matin = info_user.getMorning_hour().getHours();
 		int heure_depart_soir = info_user.getNight_hour().getHours();
@@ -65,7 +65,6 @@ public class SearchForRideshare extends HttpServlet {
 			
 			for(UserBE user_aux : list){
 				if(user_aux != user){
-				//int num_user_aux = user.getRide_infos().indexOf(user_aux);
 				RideInfoBE info = user_aux.getRide_infos().get(0);
 				if(((info.getMorning_hour().getHours() - 1)<= heure_depart_matin) && (heure_depart_matin <= info.getMorning_hour().getHours() + 1 )){
 					if(((info.getNight_hour().getHours() - 1)<= heure_depart_soir) && (heure_depart_soir <= info.getNight_hour().getHours() + 1 )){
@@ -73,8 +72,6 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isLundi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_lundi.add(user_aux);
-					
-									
 								}						
 							}
 						}
@@ -82,15 +79,13 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isMardi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_mardi.add(user_aux);
-									
 								}						
 							}
 						}
 						if (info_user.getDays().isMercredi()){
 							if(info.getDays().isMercredi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
-									matches_list_mercredi.add(user_aux);
-																
+									matches_list_mercredi.add(user_aux);						
 								}						
 							}
 						}
@@ -98,7 +93,6 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isJeudi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_jeudi.add(user_aux);
-									
 								}						
 							}
 						}
@@ -106,7 +100,6 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isVendredi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 										matches_list_vendredi.add(user_aux);
-									
 								}						
 							}
 						}
@@ -115,7 +108,6 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isSamedi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_samedi.add(user_aux);
-								
 								}						
 							}
 						}
@@ -123,8 +115,6 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isDimanche()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 										matches_list_dimanche.add(user_aux);
-						
-									
 								}						
 							}
 						}
