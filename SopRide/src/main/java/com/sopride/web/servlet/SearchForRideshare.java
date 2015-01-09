@@ -41,7 +41,7 @@ public class SearchForRideshare extends HttpServlet {
 		UserBE user = userCtrl.getUser();
 		UserDAO DAO = UserDAO.getInstance();
 		List<UserBE> list = DAO.getAllUser();
-		//int num_user = user.getRide_infos().indexOf(user);
+		
 		if (user.getRide_infos().isEmpty()){
 			WebUtils.forward(request, response, "rideshareNotPossible.jsp");
 
@@ -66,9 +66,9 @@ public class SearchForRideshare extends HttpServlet {
 			for(UserBE user_aux : list){
 				if(user_aux != user){
 				//int num_user_aux = user.getRide_infos().indexOf(user_aux);
-				RideInfoBE info = user.getRide_infos().get(0);
-				if(((info.getMorning_hour().getHours() - 1)< heure_depart_matin) && (heure_depart_matin < info.getMorning_hour().getHours() + 1 )){
-					if(((info.getNight_hour().getHours() - 1)< heure_depart_soir) && (heure_depart_soir < info.getNight_hour().getHours() + 1 )){
+				RideInfoBE info = user_aux.getRide_infos().get(0);
+				if(((info.getMorning_hour().getHours() - 1)<= heure_depart_matin) && (heure_depart_matin <= info.getMorning_hour().getHours() + 1 )){
+					if(((info.getNight_hour().getHours() - 1)<= heure_depart_soir) && (heure_depart_soir <= info.getNight_hour().getHours() + 1 )){
 						if (info_user.getDays().isLundi()){
 							if(info.getDays().isLundi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
@@ -130,7 +130,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 					}
 
-					
+				
 				}
 				}
 				
