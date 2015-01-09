@@ -8,8 +8,10 @@
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/WEB-INF/tags/tagLib.jsp</include-prelude>
+      <page-encoding>UTF-8</page-encoding>
     </jsp-property-group>
   </jsp-config>
+
   <filter-mapping>
     <filter-name>CommonFilter</filter-name>
     <url-pattern></url-pattern>
@@ -22,6 +24,7 @@
     <filter-name>BlockIfNotAdmin</filter-name>
     <url-pattern></url-pattern>
   </filter-mapping>
+
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

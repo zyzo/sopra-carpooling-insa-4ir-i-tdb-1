@@ -4,7 +4,8 @@
       <form id="loginForm" class="form" role="form" action="login" method="post">
         <div class="form-group">
        		<label for="email">Email</label>
-          	<input type="email" name="email" placeholder="Votre email" class="form-control" id="email" required="required">
+          	<input type="email" name="email" placeholder="Votre email" class="form-control" id="email" required="required"
+                   value="<c:out value="${param.email}"/>"/>
         </div>
         <div class="form-group">
           <label for="passwd">Mot de passe</label>
