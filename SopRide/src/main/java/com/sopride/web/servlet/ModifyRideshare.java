@@ -65,13 +65,14 @@ public class ModifyRideshare extends HttpServlet {
 				}
 			}
 			if (rideSelected == null) throw new Exception() ; 		
-			request.setAttribute("ride", rideSelected);				
-			request.setAttribute("user", user);	
-			request.setAttribute("list", list);
-			request.setAttribute("morningH", rideSelected.getMorning_hour()) ;
-			request.setAttribute("nightH", rideSelected.getNight_hour()) ; 		 
-			request.setAttribute("field", rideSelected.getDays()) ; 
 
+			request.getSession().setAttribute("user", user);	
+			request.getSession().setAttribute("ride", rideSelected);				
+			request.getSession().setAttribute("list", list);
+			request.getSession().setAttribute("field", rideSelected.getDays()) ;
+			request.getSession().setAttribute("morningH", rideSelected.getMorning_hour()) ;
+			request.getSession().setAttribute("nightH", rideSelected.getNight_hour()) ; 
+						
 			WebUtils.forward(request, response, "modifyrideshare.jsp");
 		}
 
@@ -85,7 +86,7 @@ public class ModifyRideshare extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		try {
 
 			// récupération de l'utilisateur
