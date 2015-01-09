@@ -41,8 +41,8 @@ public class AddRideshareServlet extends HttpServlet {
 		UserCtrl userCtrl = WebUtils.getUserCtrl(request);
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
 		List<WorkplaceBE> list = DAO.getAllWorkplace();
-		request.setAttribute("user", userCtrl.getUser());
-		request.setAttribute("list", list);
+		request.getSession().setAttribute("user", userCtrl.getUser());
+		request.getSession().setAttribute("list", list);
 		WebUtils.forward(request, response, "addrideshare.jsp");
 
 	}
@@ -72,7 +72,9 @@ public class AddRideshareServlet extends HttpServlet {
 
 			// création/vérification ZipCode de l'adresse de départ (maison)		 
 			int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
-			String city = request.getParameter("HomeCity");		
+			request.getSession().setAttribute("postcode1", postcode);
+			String city = request.getParameter("HomeCity");	
+			request.getSession().setAttribute("city1", city);
 			AddressBE home = new AddressBE() ; 
 			home.setPostCode(postcode) ;
 			home.setCity(city);
@@ -97,7 +99,6 @@ public class AddRideshareServlet extends HttpServlet {
 			String[] Tab = timeS.split(":");
 			Time time =  new Time(Integer.parseInt(Tab[0]),Integer.parseInt(Tab[1]), 0) ; 
 			rideInfo.setNight_hour(time);
-
 
 			timeS = request.getParameter("departDJ") ;
 			if (!timeValidator.validate(timeS)) {
@@ -172,10 +173,13 @@ public class AddRideshareServlet extends HttpServlet {
 			rideInfoDAO.registerRideInfo(rideInfo);
 
 			// redirection
+			request.getSession().setAttribute("postcode1", null);	
+			request.getSession().setAttribute("city1", null);
 			WebUtils.forward(request, response, "accountinfosModified.jsp");
 		}
 		catch(NumberFormatException e){
-			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 
+			e.printStackTrace(); 
+			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 			
 		}
 	} 
 

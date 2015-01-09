@@ -92,8 +92,8 @@ public class ModifyAccountServlet extends HttpServlet {
 		} 
 		catch (Exception e) {
 			request.setAttribute("user", user);
+			e.printStackTrace(); 
 			WebUtils.forward(request, response, "modifyaccount.jsp");
-
 		}
 	}
 }

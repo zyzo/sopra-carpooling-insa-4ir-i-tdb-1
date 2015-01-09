@@ -30,7 +30,7 @@ public class WorkdayDAO {
 	
 	public WorkdayBE getWorkday(int id){
 		session.beginTransaction();
-		WorkdayBE workday = (WorkdayBE)session.load(WorkdayBE.class, id);
+		WorkdayBE workday = (WorkdayBE) session.load(WorkdayBE.class, id);
 		session.getTransaction().commit();
 		return workday;
 	}
