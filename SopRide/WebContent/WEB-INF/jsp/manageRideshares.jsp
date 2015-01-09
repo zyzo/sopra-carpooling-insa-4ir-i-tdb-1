@@ -29,11 +29,17 @@
 
 <c:param name="key" value="AIzaSyAWtwnk0kNJlxITog0xf9y7EDYaywrnUDk"/>
 </c:url>"></iframe>
-							<p></p>
+							
 								
 				</body>
 				
 				</c:forEach>
+				<p class="text-right">
+	<a class="btn btn-default" href="/SopRide/addrideshare" role="button">
+	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	Ajouter
+	</a>
+	</p>
 			</ul>
 
 			
