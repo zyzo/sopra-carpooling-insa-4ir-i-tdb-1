@@ -54,12 +54,13 @@ public class RegisterServlet extends HttpServlet {
 			
 			UserDAO.getInstance().registerUser(user);
 			WebUtils.forward(request, response, "registerdone.jsp");		
-			WebUtils.sendMail(email, "Inscription SoprideShare", 
-					"Merci pour votre inscription sur l'application SopRideShare." 
-					+" Votre email est : "
+			WebUtils.sendMailHTML(email, "Inscription SoprideShare", 
+					"<h1>Merci pour votre inscription sur l'application SopRideShare. </h1>" 
+					+"<h3>Votre email est : "
 					+ email
-					+ " Votre mot de passe est : "
-					+ password );
+					+ " </h3> <h3>Votre mot de passe est : "
+					+ password 
+					+"</h3>");
 		} catch(NumberFormatException e2){
 			throw new InscriptionException("register.jsp", "Numéro de téléphone non valide");	
 			} catch (DaoException e) {
