@@ -2,12 +2,7 @@
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Veuillez entrer vos informations de covoiturage !</h1>
-			<ul>
-				
-			</ul>
-			
-			
+			<div class="text-center text-warning">Veuillez entrer vos informations de covoiturage !</div>
 		</div>
 	</div>
 

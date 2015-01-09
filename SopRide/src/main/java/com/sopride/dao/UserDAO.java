@@ -93,7 +93,6 @@ public class UserDAO {
 		Query query = session.createSQLQuery(SQL_USER_IS_ADMIN)
 					.setParameter("userId", user.getId());
 		BigInteger count = (BigInteger) query.uniqueResult();
-		System.out.println(count);
 		session.getTransaction().commit();
 		return count.intValue() == 1;
 	}

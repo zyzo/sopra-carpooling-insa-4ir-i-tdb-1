@@ -1,22 +1,22 @@
 <t:baseLayout>
-<div class="jumbotron">
+<div id="reportPage" class="jumbotron">
 		<div class="container"></div>
 		<br/>  <br/> 
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 		
-  			<div class="panel-heading"><h2>Nombre de connexion</h2></div>
+  			<div class="panel-heading"><strong>Nombre de connexions</strong></div>
   			  <div class="panel-body">
-  			  		<p>Connexions depuis le lancement de l'application : ${total}</p>
-  			  		<p>Nombre d'utilisateurs : ${nombreutilisateur}</p>
+  			  		Connexions depuis le lancement de l'application : <span class="badge">${total}</span><br/>
+  			  		Nombre d'utilisateurs : <span class="badge">${nombreutilisateur}</span>
 				</div>
   				<table class="table">
-  				<tr><th>Nom</th><th>Adresse électronique</th><th>Nombre de connexion</th><th>Dernière Connexion</tr>
+  				<tr><th>Nom</th><th>Adresse électronique</th><th>Nombre de connexions</th><th>Dernière Connexion</tr>
   				<c:forEach var="user" items="${list}">
   				
   					<tr>
   					<td>${user.last_name}</td>
   					<td>${user.email}</td>
-  					<td>${user.numberOfConnections}	</td>
+  					<td><span class="badge">${user.numberOfConnections}</span>	</td>
   					<fmt:formatDate value="${user.lastConnected }" var="formattedDate" type="date" pattern="MM-dd-yyyy"/>	
   					<td><c:out value="${formattedDate}"/></td>	
   					
