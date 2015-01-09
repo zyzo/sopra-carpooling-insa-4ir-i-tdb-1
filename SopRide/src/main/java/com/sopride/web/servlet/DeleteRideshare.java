@@ -63,13 +63,14 @@ public class DeleteRideshare extends HttpServlet {
 			user.getRide_infos().remove(rideSelected) ;
 			userDAO.updateUser(user);			
 			rideInfoDAO.removeRideshare(id); 
-			workdayDAO.removeWorkday(rideSelected.getDays().getId_workingdays());
-			adressDAO.removeAddressBE(rideSelected.getHome().getId());
+			//workdayDAO.removeWorkday(rideSelected.getDays().getId_workingdays());
+			//adressDAO.removeAddressBE(rideSelected.getHome().getId());
 			
 			WebUtils.forward(request, response, "deleterideshare.jsp");
 		}
 		catch (Exception e) {
 			WebUtils.forward(request, response, "index.jsp");
+			e.printStackTrace();
 		}
 	}
 
