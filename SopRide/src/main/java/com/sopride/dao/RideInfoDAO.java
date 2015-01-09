@@ -1,11 +1,14 @@
 package com.sopride.dao;
 
 import java.sql.Time;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.sopride.core.beans.RideInfoBE;
+import com.sopride.core.beans.UserBE;
 
 public class RideInfoDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -42,8 +45,16 @@ public class RideInfoDAO {
 		session.getTransaction().commit();
 	}
 	
+	public List<RideInfoBE> getAllRideInfoBE(){
+        session.beginTransaction();
+        Query query = session.createQuery("from com.sopride.core.beans.RideInfoBE");
+        List<RideInfoBE> ul = query.list();
+        session.getTransaction().commit();
+        return ul;
+	}
+	
 	public static void main(String[] argc){
-		RideInfoBE rideinfo = RideInfoDAO.getInstance().getRideInfo(2);
+		
 	}
 
 	public void update(RideInfoBE rideInfo) {
