@@ -4,7 +4,7 @@
 		<br/>  <br/> 
 		<div class="panel panel-primary">
 		
-  			<div class="panel-heading"><strong>Nombre de connexions</strong></div>
+  			<div class="panel-heading"><strong>Rapport d'informations</strong></div>
   			  <div class="panel-body">
   			  		Connexions depuis le lancement de l'application : <span class="badge">${total}</span><br/>
   			  		Nombre d'utilisateurs : <span class="badge">${nombreutilisateur}</span>
