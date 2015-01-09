@@ -53,7 +53,7 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 		
 		WorkPlaceDAO DAO = WorkPlaceDAO.getInstance();
 		
-		WorkplaceBE workplace = new WorkplaceBE();	
+		WorkplaceBE workplace = DAO.getWorkplace(id);	
 		workplace.setCity(City);
 		workplace.setId(id);
 		workplace.setPostCode(Postcode);
@@ -65,9 +65,6 @@ public class ModifyWorkplaceServlet extends HttpServlet {
 			throw new AddressException("addworkplace.jsp", "Code postal non valide");
 		} 
 		
-		catch (Exception e) {
-			WebUtils.forward(request, response, "index.jsp");
-		}
 	}
 
 }
