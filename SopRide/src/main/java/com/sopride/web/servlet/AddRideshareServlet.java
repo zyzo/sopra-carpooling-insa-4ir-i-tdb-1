@@ -53,7 +53,6 @@ public class AddRideshareServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
 		try {
 
 			// création d'un trajet
@@ -70,7 +69,9 @@ public class AddRideshareServlet extends HttpServlet {
 			AddressDAO adressDAO = AddressDAO.getInstance();
 			RideInfoDAO rideInfoDAO = RideInfoDAO.getInstance();
 
-			// création/vérification ZipCode de l'adresse de départ (maison)		 
+			// création/vérification l'adresse de départ (maison)		 
+			String address = request.getParameter("HomeAddress");	
+			request.getSession().setAttribute("address1", address);
 			int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
 			request.getSession().setAttribute("postcode1", postcode);
 			String city = request.getParameter("HomeCity");	
@@ -78,14 +79,13 @@ public class AddRideshareServlet extends HttpServlet {
 			AddressBE home = new AddressBE() ; 
 			home.setPostCode(postcode) ;
 			home.setCity(city);
-			home.setStreet("non renseigné");
+			home.setStreet(address);
 
 			// détermination de l'adresse d'arrivée (lieu de travail)
 			List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
 			int WorkplaceID = Integer.parseInt(request.getParameter("workplace"));
 			if ((list == null) || list.isEmpty()){
 				throw new AddRideshareException(VIEW, "Aucun lieu de travail disponible") ; 
-				
 			}
 			for(WorkplaceBE workplace : list){
 				if(workplace.getId() == WorkplaceID) {
@@ -177,6 +177,7 @@ public class AddRideshareServlet extends HttpServlet {
 			rideInfoDAO.registerRideInfo(rideInfo);
 
 			// redirection
+			request.getSession().setAttribute("address1", null);	
 			request.getSession().setAttribute("postcode1", null);	
 			request.getSession().setAttribute("city1", null);
 			WebUtils.forward(request, response, "accountinfosModified.jsp");
