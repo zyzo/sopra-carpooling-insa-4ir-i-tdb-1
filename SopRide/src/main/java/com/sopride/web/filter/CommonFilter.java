@@ -23,6 +23,7 @@ public class CommonFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
+        request.setCharacterEncoding("UTF-8");
         request.getSession().setAttribute(WebConstants.SESSION_USER_CTRL, new UserCtrl(request.getSession()));
         try {
             chain.doFilter(req, resp);
