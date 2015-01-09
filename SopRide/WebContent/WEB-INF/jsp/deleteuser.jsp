@@ -1,11 +1,11 @@
 <t:baseLayout>
 
 	<div class="jumbotron">
-		<div class="container"></div>
-				<br/>  <br/> 
+		<div class="container">
+				
 		
-		<h1>L'utilisateur a bien été supprimé. </h1>
-		<p class="text-right"> 
+		<div class="text-center text-success">L'utilisateur a bien été supprimé. </div>
+		<p class="text-center"> 
 			<a class="btn btn-default" href="/SopRide/manageaccount" role="button">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							Précédent

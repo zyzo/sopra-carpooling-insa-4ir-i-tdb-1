@@ -2,10 +2,9 @@
 
 	<div class="jumbotron">
 		<div class="container">
-		<br/>  <br/> 
 				
-		<p> Vos informations ont été modifiées <p>
-		<p class="text-right"> 
+		<div class="text-center text-success"> Vos informations ont été modifiées </div>
+		<p class="text-center" style="margin-top: 30px;"> 
 			<a class="btn btn-default" href="/SopRide/" role="button">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							Retour
