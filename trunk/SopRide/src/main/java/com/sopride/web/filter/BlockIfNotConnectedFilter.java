@@ -39,7 +39,7 @@ public class BlockIfNotConnectedFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         UserCtrl userCtrl = WebUtils.getUserCtrl(req);
-        if (userCtrl.isConnected()) {
+        if (userCtrl != null && userCtrl.isConnected()) {
             chain.doFilter(req, resp);
         } else {
             WebUtils.forward(req, resp, "notConnected.jsp");
