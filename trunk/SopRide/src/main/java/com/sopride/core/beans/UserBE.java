@@ -2,14 +2,10 @@ package com.sopride.core.beans;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Type;
-
-import com.sopride.core.exception.DaoException;
 import com.sopride.core.exception.UserException;
 import com.sopride.dao.CryptUtil;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

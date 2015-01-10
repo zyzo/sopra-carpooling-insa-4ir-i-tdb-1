@@ -1,6 +1,4 @@
 package com.sopride.dao;
-import com.sopride.core.beans.*;
-import java.util.List;
 public class WorkPlaceDAOTest {
 
 	public static void main (String[] args){
