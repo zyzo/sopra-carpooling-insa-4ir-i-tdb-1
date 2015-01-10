@@ -27,4 +27,5 @@ public class WebConstants {
 
     public static final String ATT_MESSAGE_TYPE = "messageType";
     public static final String ATT_MESSAGE_CONTENT = "messageContent";
+    public static final String ATT_GOOGLE_API_KEY = "googleApiKey";
 }
