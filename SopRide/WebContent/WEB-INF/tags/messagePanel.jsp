@@ -14,7 +14,7 @@
 
   <div id="${_id_block}" class="message-block alert alert-dismissible ${_class_block}" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <span class="glyphicon ${_icon}" aria-hidden=\"true\"></span>
+      <span class="glyphicon ${_icon}" aria-hidden="true"></span>
       <c:out value="${messageContent}"/>
     </fieldset>
   </div>

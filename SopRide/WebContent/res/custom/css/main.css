@@ -54,3 +54,7 @@ body {
 	width : 700px;
 	margin : auto;
 }
+
+.googleMapPanel {
+	margin: 20px 0;
+}

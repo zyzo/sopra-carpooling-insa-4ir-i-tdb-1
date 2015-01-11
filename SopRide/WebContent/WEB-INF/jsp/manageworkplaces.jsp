@@ -25,8 +25,8 @@
 							Google Map
 						</a>
 						</span>
-						<div class="collapse" id="${workplace.id}" style="margin: 20px 0">
-							<div id="${workplace.id}" class="well">
+						<div class="collapse googleMapPanel" id="${workplace.id}">
+							<div id="${workplace.id}" class="well" style="width : 640px">
 								<iframe width="600" height="450" src="
 									<c:url value="https://www.google.com/maps/embed/v1/search">
 										<c:param name="q" value="${workplace.street}, ${workplace.city}"/>
