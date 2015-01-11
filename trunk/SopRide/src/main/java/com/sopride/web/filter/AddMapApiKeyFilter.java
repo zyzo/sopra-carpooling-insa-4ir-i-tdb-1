@@ -12,6 +12,7 @@ import java.io.IOException;
 @WebFilter(filterName = "AddMapApiKeyFilter", urlPatterns =
         {
                 WebConstants.PATH_MANAGE_WORKPLACE,
+                WebConstants.PATH_RIDESHARE_MANAGER,
         })
 public class AddMapApiKeyFilter implements Filter {
     public void destroy() {
