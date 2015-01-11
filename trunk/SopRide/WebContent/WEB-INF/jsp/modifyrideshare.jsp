@@ -6,15 +6,10 @@
 			<form id="modifyForm" class="form" role="form" method="POST">
 
 				<div class="form-group">
-					<label for="HomeAddress">Adresse de votre domicile : </label> <input
+					<label for="HomeAddress">Rue de votre domicile : </label> <input
 						name="HomeAddress" type="text" id="HomeAddress"
-						class="form-control" required="required" value="${ride.home.street}">
-				</div>
-
-				<div class="form-group">
-					<label for="HomeCity">Ville de votre domicile : </label> <input
-						name="HomeCity" type="text" id="HomeCity" class="form-control"
-						value="${ride.home.city}" required="required">
+						class="form-control" required="required"
+						value="${ride.home.street}">
 				</div>
 
 				<div class="form-group">
@@ -22,6 +17,14 @@
 						name="HomePostcode" type="text" id="HomePostcode"
 						value="${ride.home.postCode}" class="form-control"
 						required="required">
+
+					<div class="form-group">
+						<label for="HomeCity">Ville de votre domicile : </label> <input
+							name="HomeCity" type="text" id="HomeCity" class="form-control"
+							value="${ride.home.city}" required="required">
+					</div>
+
+
 				</div>
 
 				<div class="form-group">

@@ -1,14 +1,10 @@
 package com.sopride.dao;
 
 import java.math.BigInteger;
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 import com.sopride.core.beans.RideInfoBE;
 import com.sopride.core.beans.UserBE;
-import com.sopride.core.beans.WorkplaceBE;
 import com.sopride.core.exception.DaoException;
 
 import org.hibernate.Query;
@@ -39,9 +35,8 @@ public class UserDAO {
 			session.save(user);
 			session.getTransaction().commit();
 		}catch(ConstraintViolationException e){
-			session.getTransaction().rollback();
-
-			throw new DaoException("Email d�j� utilis�");
+			session.getTransaction().rollback();			
+			throw new DaoException("Email déjà utilisé");
 			
 		}
 	}

@@ -45,7 +45,7 @@
 		</c:if>
 	  </c:when>
 	  <c:otherwise>
-		  <p><a class="btn btn-primary btn-lg" href="inscription" role="button">Créer un compte »</a></p>
+		  <p><a class="btn btn-primary btn-lg" href="inscription" role="button">Créer un compte </a></p>
 	  </c:otherwise>
 	  </c:choose>
 	
