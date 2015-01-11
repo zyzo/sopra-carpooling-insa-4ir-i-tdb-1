@@ -53,9 +53,13 @@ public class DeleteWorkplaceServlet extends HttpServlet {
 					
 					if(user.getRide_infos().contains(ri)){
 						user.getRide_infos().remove(ri) ;
+
 					}
-				uDAO.updateUser(user);
+				}
+				
 				rDAO.removeRideshare(ri.getId());
+				for(UserBE user : listu){
+					uDAO.updateUser(user);
 				}
 			}
 		}
