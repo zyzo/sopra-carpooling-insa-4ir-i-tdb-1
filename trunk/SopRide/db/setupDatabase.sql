@@ -140,19 +140,11 @@ ALTER TABLE `admin`
 ALTER TABLE `workplaces`
   ADD CONSTRAINT `workplaces_ibfk_1` FOREIGN KEY (`workplace_name`) REFERENCES `address` (`idAddress`);
   
-  ALTER TABLE `car_pooling_infos` ADD FOREIGN KEY ( `id_user` ) REFERENCES `sopride`.`users` (
-`id`
-) ON DELETE RESTRICT ON UPDATE RESTRICT ;
-
-ALTER TABLE `car_pooling_infos` ADD FOREIGN KEY ( `home` ) REFERENCES `sopride`.`address` (
-`idAddress`
-) ON DELETE RESTRICT ON UPDATE RESTRICT ;
-
-ALTER TABLE `car_pooling_infos` ADD FOREIGN KEY (`cap_pooling_workplace`) REFERENCES `sopride`.`workplaces`(`workplace_name`)
-ON DELETE CASCADE ON UPDATE CASCADE ;
-
-ALTER TABLE `car_pooling_infos`ADD FOREIGN KEY (`days`) REFERENCES `sopride`.`workingdays`(`id_workingdays`)
-ON DELETE RESTRICT ON UPDATE RESTRICT ;
+ALTER TABLE `car_pooling_infos`
+  ADD CONSTRAINT `car_pooling_infos_ibfk_1` FOREIGN KEY (`home`) REFERENCES `address` (`idAddress`),
+  ADD CONSTRAINT `car_pooling_infos_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `car_pooling_infos_ibfk_3` FOREIGN KEY (`days`) REFERENCES `workingdays` (`id_workingdays`),
+  ADD CONSTRAINT `car_pooling_infos_ibfk_4` FOREIGN KEY (`car_pooling_workplace`) REFERENCES `workplaces` (`workplace_name`)
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
