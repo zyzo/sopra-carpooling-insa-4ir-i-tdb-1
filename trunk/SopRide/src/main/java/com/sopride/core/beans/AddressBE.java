@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class AddressBE {
 
-    @Id
+    
+
+	@Id
     @GeneratedValue
     @Column(name = "idAddress")
     private int id;
@@ -53,4 +55,8 @@ public class AddressBE {
         this.street = street;
     }
 
+    @Override
+	public String toString() {
+		return street + " "+ postCode + " " + city;
+	}
 }
