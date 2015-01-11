@@ -55,21 +55,21 @@ public class AddRideshareServlet extends HttpServlet {
 
 		try {
 
-			// création d'un trajet
+			// crï¿½ation d'un trajet
 			RideInfoBE rideInfo = new RideInfoBE() ; 
 
-			// récupération de l'utilisateur
+			// rï¿½cupï¿½ration de l'utilisateur
 			UserBE user = WebUtils.getUserCtrl(request).getUser();
 			rideInfo.setUser(user);
 
-			// récupération des différentes classes pour manipuler les tables de la base de données
+			// rï¿½cupï¿½ration des diffï¿½rentes classes pour manipuler les tables de la base de donnï¿½es
 			UserDAO userDAO = UserDAO.getInstance() ; 
 			WorkPlaceDAO workplaceDAO = WorkPlaceDAO.getInstance();
 			WorkdayDAO workdayDAO = WorkdayDAO.getInstance();
 			AddressDAO adressDAO = AddressDAO.getInstance();
 			RideInfoDAO rideInfoDAO = RideInfoDAO.getInstance();
 
-			// création/vérification l'adresse de départ (maison)		 
+			// crï¿½ation/vï¿½rification l'adresse de dï¿½part (maison)		 
 			String address = request.getParameter("HomeAddress");	
 			request.getSession().setAttribute("address1", address);
 			int postcode = Integer.parseInt(request.getParameter("HomePostcode"));
@@ -81,7 +81,7 @@ public class AddRideshareServlet extends HttpServlet {
 			home.setCity(city);
 			home.setStreet(address);
 
-			// détermination de l'adresse d'arrivée (lieu de travail)
+			// dï¿½termination de l'adresse d'arrivï¿½e (lieu de travail)
 			List<WorkplaceBE> list = workplaceDAO.getAllWorkplace();
 			int WorkplaceID = Integer.parseInt(request.getParameter("workplace"));
 			if ((list == null) || list.isEmpty()){
@@ -93,7 +93,7 @@ public class AddRideshareServlet extends HttpServlet {
 				}
 			}
 
-			// vérification heure départ le matin et heure de départ le soir
+			// vï¿½rification heure dï¿½part le matin et heure de dï¿½part le soir
 			Time24HoursValidator timeValidator = new Time24HoursValidator() ; 
 
 			String timeS = request.getParameter("departFJ") ;
@@ -113,7 +113,7 @@ public class AddRideshareServlet extends HttpServlet {
 			rideInfo.setMorning_hour(time);
 			/////
 
-			// récupération des checkboxes
+			// rï¿½cupï¿½ration des checkboxes
 			String[] selectedDays = request.getParameterValues("checkbox");
 			if (selectedDays == null) {
 				throw new AddRideshareException(VIEW, "Veuillez saisir au moins un jour") ; 
@@ -184,7 +184,7 @@ public class AddRideshareServlet extends HttpServlet {
 		}
 		catch(NumberFormatException e){
 			e.printStackTrace(); 
-			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal à 5 chiffres") ; 			
+			throw new AddRideshareException(VIEW, "Veuillez saisir un code postal Ã  5 chiffres") ; 			
 		}
 	} 
 

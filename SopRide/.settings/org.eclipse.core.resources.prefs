@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF=ISO-8859-1
+encoding//WebContent/WEB-INF/jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/addworkplace.jsp=UTF-8
+encoding//WebContent/WEB-INF/tags=UTF-8
+encoding//src/main/java/com/sopride/dao/UserDAO.java=UTF-8
