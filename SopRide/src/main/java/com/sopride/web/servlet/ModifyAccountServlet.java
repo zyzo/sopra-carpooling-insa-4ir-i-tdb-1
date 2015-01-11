@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopride.core.beans.UserBE;
+import com.sopride.core.exception.InscriptionException;
 import com.sopride.core.exception.UserException;
 import com.sopride.dao.UserDAO;
 import com.sopride.web.controller.UserCtrl;
@@ -36,13 +37,9 @@ public class ModifyAccountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserCtrl userCtrl = (UserCtrl) request.getSession().getAttribute(WebConstants.SESSION_USER_CTRL);
-		UserBE user = userCtrl.getUser();
-		
-		if (user != null) {			
-			request.setAttribute("user", user);
-			WebUtils.forward(request, response, "modifyaccount.jsp");
-		}
-		WebUtils.forward(request, response, "login.jsp");
+		UserBE user = userCtrl.getUser();	
+		request.setAttribute("user", user);
+		WebUtils.forward(request, response, "modifyaccount.jsp");
 
 	}
 
@@ -60,12 +57,10 @@ public class ModifyAccountServlet extends HttpServlet {
 			user.setPhone(Integer.parseInt(request.getParameter("phone")));
 		} catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
-			request.setAttribute("erreur2", ("Numéro de téléphone non valide"));
-			WebUtils.forward(request, response, "modifyaccount.jsp");
-		} catch (UserException e1) {
-			request.setAttribute("erreur1", e1);
-			WebUtils.forward(request, response, "modifyaccount.jsp");
-		}
+			throw new InscriptionException("modifyaccount.jsp","Numéro de téléphone non valide");
+		} catch (UserException e) {
+			// TODO Auto-generated catch block
+			throw new InscriptionException("modifyaccount.jsp","Numéro de téléphone non valide");		}
 
 		try{ 
 			if (!request.getParameter("prevpwd").equals("")) {
