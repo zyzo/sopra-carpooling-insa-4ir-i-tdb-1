@@ -9,10 +9,12 @@
 				</c:if>
 				<c:if test="${!empty list_lundi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_lundi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 </c:if>
 						<c:forEach var="ride" items="${list_lundi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -24,10 +26,12 @@
 				</c:if>
 				<c:if test="${!empty list_mardi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_mardi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_mardi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -39,10 +43,12 @@
 				</c:if>
 				<c:if test="${!empty list_mercredi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_mercredi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_mercredi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -54,10 +60,12 @@
 				</c:if>
 				<c:if test="${!empty list_jeudi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_jeudi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_jeudi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -69,10 +77,12 @@
 				</c:if>
 				<c:if test="${!empty list_vendredi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_vendredi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_vendredi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -84,10 +94,12 @@
 				</c:if>
 				<c:if test="${!empty list_samedi[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_samedi[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_samedi[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
@@ -99,10 +111,12 @@
 				</c:if>
 				<c:if test="${!empty list_dimanche[0] }">
 					 <c:forEach var="i" begin="0" end="${nb_trajets}" step="1">
-					 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					 <c:if test="${!empty list_dimanche[i]}">
+						 <p>Pour le trajet <c:out value="${trajets[i]}"/> :</p>
+					</c:if>
 						<c:forEach var="ride" items="${list_dimanche[i]}">
 								<li>${ride.first_name} ${ride.last_name}
-									${ride.email} (${ride.email} / ${ride.phone})</li>
+									(${ride.email} / ${ride.phone})</li>
 						</c:forEach>
 					</c:forEach>
 				</c:if>
