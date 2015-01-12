@@ -13,6 +13,7 @@ import java.io.IOException;
         {
                 WebConstants.PATH_MANAGE_WORKPLACE,
                 WebConstants.PATH_RIDESHARE_MANAGER,
+                WebConstants.PATH_RIDESHARE_POSSIBLE,
         })
 public class AddMapApiKeyFilter implements Filter {
     public void destroy() {

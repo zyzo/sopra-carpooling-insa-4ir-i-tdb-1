@@ -58,3 +58,60 @@ body {
 .googleMapPanel {
 	margin: 20px 0;
 }
+
+.divRidesharePossible, .ridesharePossible {
+	width : 95%;
+	margin : auto;
+}
+
+.ridesharePossible tbody tr{
+	height : 231px;
+}
+
+.ridesharePossible tbody td {
+	border-right: 1px solid beige;
+}
+
+.ridesharePossible th {
+	width : 10%;
+	text-align: center;
+}
+.ridesharePossible tbody tr td {
+	vertical-align : middle;	
+}
+
+.ridesharePossible .firstCol {
+	text-align: center;
+	font-weight: bold;
+}
+
+#rideInfoModal p {
+	font-size : 14px;
+}
+
+#rideInfoModal .modal-dialog { 
+	width : 1200px;
+}
+
+#rideInfoModal .info {
+	width : 70%;	
+}
+#rideInfoModal #infoUser {
+	height : 94px;	
+}
+
+#rideInfoModal #infoRide {
+	height : 30px;	
+}
+
+#rideInfoModal .info .leftColumn { 
+	float:left;
+}
+
+#rideInfoModal .info .rightColumn { 
+	margin-left: 50%;
+}
+
+#rideInfoModal .modal-dialog .modal-footer {
+	margin-top : 20px;
+}

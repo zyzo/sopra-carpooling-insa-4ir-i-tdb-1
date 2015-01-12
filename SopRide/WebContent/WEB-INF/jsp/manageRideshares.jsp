@@ -16,12 +16,12 @@
 						</span>
 						<span style="float:right">
 						<a class="btn btn-info"
-						href="/SopRide/modifyrideshare?id=${rideshare.id}"> <span
+						href="modifyrideshare?id=${rideshare.id}"> <span
 							class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 							Modifier
 					</a>
 					 <a class="btn btn-danger"
-						href="/SopRide/deleterideshare?id=${rideshare.id}"> <span
+						href="deleterideshare?id=${rideshare.id}"> <span
 							class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 							Supprimer
 					</a> 
