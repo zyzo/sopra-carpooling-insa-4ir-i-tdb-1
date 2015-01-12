@@ -2,7 +2,9 @@ package com.sopride.web.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,6 +68,7 @@ public class SearchForRideshare extends HttpServlet {
 		
 		int i = 0;
 		String trajets[] = new String[user.getRide_infos().size()];
+		Map<String, List<RideInfoBE>[]> rideInfoMap = new HashMap<>();
 		for(RideInfoBE info_user : user.getRide_infos()){
 		//RideInfoBE info_user = user.getRide_infos().get(0);
 		trajets[i] = "de " + info_user.getHome().toString() + " A " + info_user.getCar_pooling_workplace().toString() + " avec " ;
@@ -95,6 +98,7 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isLundi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_lundi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_lundi", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -102,13 +106,15 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isMardi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_mardi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_mardi", i, user.getRide_infos().size());
 								}						
 							}
 						}
 						if (info_user.getDays().isMercredi()){
 							if(info.getDays().isMercredi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
-									matches_list_mercredi[i].add(user_aux);						
+									matches_list_mercredi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_mercredi", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -116,6 +122,7 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isJeudi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_jeudi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_jeudi", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -123,6 +130,7 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isVendredi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_vendredi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_vendredi", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -131,6 +139,7 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isSamedi()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_samedi[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_samedi", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -138,6 +147,7 @@ public class SearchForRideshare extends HttpServlet {
 							if(info.getDays().isDimanche()){
 								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
 									matches_list_dimanche[i].add(user_aux);
+									addRideInfoToMap(rideInfoMap, info, "list_dimanche", i, user.getRide_infos().size());
 								}						
 							}
 						}
@@ -161,11 +171,28 @@ public class SearchForRideshare extends HttpServlet {
 			request.setAttribute("list_vendredi", matches_list_vendredi);
 			request.setAttribute("list_samedi", matches_list_samedi);
 			request.setAttribute("list_dimanche", matches_list_dimanche);
-			WebUtils.forward(request, response, "ridesharePossible.jsp");
 			
+			request.setAttribute("rideInfoMap", rideInfoMap);
+			request.setAttribute("mesTrajets", user.getRide_infos());
+			
+			WebUtils.forward(request, response, "ridesharePossible.jsp");
 		
 		}
 				
+	}
+
+	@SuppressWarnings("unchecked")
+	private void addRideInfoToMap(Map<String, List<RideInfoBE>[]> rideInfoMap, RideInfoBE info, String key, int correspondingRideInfo, int size) {
+		List<RideInfoBE>[] rideInfoList = rideInfoMap.get(key);
+		
+		if (rideInfoList == null) {
+			rideInfoList = new ArrayList[size];
+		}
+		if (rideInfoList[correspondingRideInfo] == null) {
+			rideInfoList[correspondingRideInfo] = new ArrayList<RideInfoBE>();
+		}
+		rideInfoList[correspondingRideInfo].add(info);
+		rideInfoMap.put(key, rideInfoList);
 	}
 
 	/**
