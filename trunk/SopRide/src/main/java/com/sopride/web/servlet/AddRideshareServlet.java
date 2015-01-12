@@ -175,7 +175,7 @@ public class AddRideshareServlet extends HttpServlet {
 
 			user.getRide_infos().add(rideInfo);
 			rideInfoDAO.registerRideInfo(rideInfo);
-
+			userDAO.updateUser(user);
 			// redirection
 			request.getSession().setAttribute("address1", null);	
 			request.getSession().setAttribute("postcode1", null);	
