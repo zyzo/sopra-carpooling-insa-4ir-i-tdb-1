@@ -96,7 +96,7 @@ public class SearchForRideshare extends HttpServlet {
 					if(heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes())){
 						if (info_user.getDays().isLundi()){
 							if(info.getDays().isLundi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_lundi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_lundi", i, user.getRide_infos().size());
 								}						
@@ -104,7 +104,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 						if (info_user.getDays().isMardi()){
 							if(info.getDays().isMardi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_mardi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_mardi", i, user.getRide_infos().size());
 								}						
@@ -112,7 +112,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 						if (info_user.getDays().isMercredi()){
 							if(info.getDays().isMercredi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_mercredi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_mercredi", i, user.getRide_infos().size());
 								}						
@@ -120,7 +120,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 						if (info_user.getDays().isJeudi()){
 							if(info.getDays().isJeudi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_jeudi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_jeudi", i, user.getRide_infos().size());
 								}						
@@ -128,7 +128,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 						if (info_user.getDays().isVendredi()){
 							if(info.getDays().isVendredi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_vendredi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_vendredi", i, user.getRide_infos().size());
 								}						
@@ -137,7 +137,7 @@ public class SearchForRideshare extends HttpServlet {
 							
 						if (info_user.getDays().isSamedi()){
 							if(info.getDays().isSamedi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_samedi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_samedi", i, user.getRide_infos().size());
 								}						
@@ -145,7 +145,7 @@ public class SearchForRideshare extends HttpServlet {
 						}
 						if (info_user.getDays().isDimanche()){
 							if(info.getDays().isDimanche()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().equals(workplace))){
+								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_dimanche[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_dimanche", i, user.getRide_infos().size());
 								}						
