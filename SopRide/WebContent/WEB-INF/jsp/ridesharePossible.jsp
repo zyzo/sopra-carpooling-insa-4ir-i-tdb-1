@@ -64,6 +64,7 @@
 							</td>
 						</c:forTokens>
 					</tr>
+					<%--
 					<tr class="info">
 						<td class="firstCol">Retour</td>
 						<td></td>
@@ -73,7 +74,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-					</tr>	
+					</tr>	 
+					--%>
 				</tbody>
 			</table>
 			</div>
@@ -165,7 +167,7 @@
 			  setUpMapFrame(modal, 'notStraightPath', userAddress, userWorkplace, myAddress);
 			  });
 		</script>
-
+		<%--
 		<div class="container">
 			<h3>Trajets possibles le lundi :</h3>
 			<ul>
@@ -288,6 +290,7 @@
 			</ul>
 			
 		</div>
+		--%>
 	</div>
 
 
