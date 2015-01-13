@@ -92,66 +92,45 @@ public class SearchForRideshare extends HttpServlet {
 				if(user_aux != user && (user_aux.getRide_infos().size() > 0)){
 				for(RideInfoBE info : user_aux.getRide_infos()){
 				//RideInfoBE info = user_aux.getRide_infos().get(0);
-				if(heure_depart_matin == info.getMorning_hour().getHours() || (heure_depart_matin-1==info.getMorning_hour().getHours() && minute_depart <= info.getMorning_hour().getMinutes()) || (heure_depart_matin+1==info.getMorning_hour().getHours() && minute_depart >=info.getMorning_hour().getMinutes())){
-					if(heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes())){
-						if (info_user.getDays().isLundi()){
-							if(info.getDays().isLundi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+				if((info_user.isDriver()||info.isDriver())&&heure_depart_matin == info.getMorning_hour().getHours() || (heure_depart_matin-1==info.getMorning_hour().getHours() && minute_depart <= info.getMorning_hour().getMinutes()) || (heure_depart_matin+1==info.getMorning_hour().getHours() && minute_depart >=info.getMorning_hour().getMinutes()) && (heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes()))){
+	
+						if((info_user.getDays().isLundi()) && info.getDays().isLundi()&&((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId()))){
+							
 									matches_list_lundi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_lundi", i, user.getRide_infos().size());
-								}						
-							}
+														
+							
 						}
-						if (info_user.getDays().isMardi()){
-							if(info.getDays().isMardi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isMardi()&& info.getDays().isMardi() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+	
 									matches_list_mardi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_mardi", i, user.getRide_infos().size());
-								}						
-							}
+
 						}
-						if (info_user.getDays().isMercredi()){
-							if(info.getDays().isMercredi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isMercredi() && info.getDays().isMercredi() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+				
 									matches_list_mercredi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_mercredi", i, user.getRide_infos().size());
-								}						
-							}
 						}
-						if (info_user.getDays().isJeudi()){
-							if(info.getDays().isJeudi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isJeudi() && info.getDays().isJeudi() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_jeudi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_jeudi", i, user.getRide_infos().size());
-								}						
-							}
+					
 						}
-						if (info_user.getDays().isVendredi()){
-							if(info.getDays().isVendredi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isVendredi() && info.getDays().isVendredi() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_vendredi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_vendredi", i, user.getRide_infos().size());
-								}						
-							}
 						}
 							
-						if (info_user.getDays().isSamedi()){
-							if(info.getDays().isSamedi()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isSamedi() && info.getDays().isSamedi() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_samedi[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_samedi", i, user.getRide_infos().size());
-								}						
-							}
 						}
-						if (info_user.getDays().isDimanche()){
-							if(info.getDays().isDimanche()){
-								if((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
+						if (info_user.getDays().isDimanche() && info.getDays().isDimanche() && (info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId())){
 									matches_list_dimanche[i].add(user_aux);
 									addRideInfoToMap(rideInfoMap, info, "list_dimanche", i, user.getRide_infos().size());
-								}						
 							}
-						}
-					}
+					
 					
 				 
 				}
