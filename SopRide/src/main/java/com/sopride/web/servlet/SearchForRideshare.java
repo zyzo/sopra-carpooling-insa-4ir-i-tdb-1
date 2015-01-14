@@ -92,7 +92,7 @@ public class SearchForRideshare extends HttpServlet {
 				if(user_aux != user && (user_aux.getRide_infos().size() > 0)){
 				for(RideInfoBE info : user_aux.getRide_infos()){
 				//RideInfoBE info = user_aux.getRide_infos().get(0);
-				if((info_user.isDriver()||info.isDriver())&&heure_depart_matin == info.getMorning_hour().getHours() || (heure_depart_matin-1==info.getMorning_hour().getHours() && minute_depart <= info.getMorning_hour().getMinutes()) || (heure_depart_matin+1==info.getMorning_hour().getHours() && minute_depart >=info.getMorning_hour().getMinutes()) && (heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes()))){
+				if((info_user.isDriver()||info.isDriver())&&((heure_depart_matin == info.getMorning_hour().getHours() )|| (heure_depart_matin-1==info.getMorning_hour().getHours() && minute_depart <= info.getMorning_hour().getMinutes()) || (heure_depart_matin+1==info.getMorning_hour().getHours() && minute_depart >=info.getMorning_hour().getMinutes())) && ((heure_depart_soir == info.getNight_hour().getHours() || (heure_depart_soir-1==info.getNight_hour().getHours() && minute_depart_soir<=info.getNight_hour().getMinutes()) || (heure_depart_soir+1==info.getNight_hour().getHours() && minute_depart_soir>=info.getNight_hour().getMinutes())))){
 	
 						if((info_user.getDays().isLundi()) && info.getDays().isLundi()&&((info.getHome().getPostCode() == postcode) && (info.getCar_pooling_workplace().getId()==workplace.getId()))){
 							
