@@ -28,17 +28,17 @@ svn checkout http://sopra-carpooling-insa-4ir-i-tdb-1.googlecode.com/svn/trunk/ 
 
 You have to execute the SQL Script _svn/trunk/SopRide/db/setupDatabase.sql_ in order to initialise your database.
 
-# Launch EasyPHP and then go to [http://127.0.0.1/modules/ EasyPHP Administration Modules]
-# Click on PHPMyAdmin
-# Then, click on the "SQL" button visible at the top of the interface.
-# Paste the SQL queries from _svn/trunk/SopRide/db/setupDatabase.sql_ (you can access to a copy of the file on the dedicated wiki page) 
+ # Launch EasyPHP and then go to [http://127.0.0.1/modules/ EasyPHP Administration Modules]
+ # Click on PHPMyAdmin
+ # Then, click on the "SQL" button visible at the top of the interface.
+ # Paste the SQL queries from _svn/trunk/SopRide/db/setupDatabase.sql_ (you can access to a copy of the file on the dedicated wiki page) 
 
 
 ----
 
 = Launch the web application =
-# Once you have launched Eclipse Luna and you have checked out our project, press CTRL+F11 to Run the Application
-# Go to [http://localhost:8080/SopRide/ the Sopride homepage] and start using the website. 
+ # Once you have launched Eclipse Luna and you have checked out our project, press CTRL+F11 to Run the Application
+ # Go to [http://localhost:8080/SopRide/ the Sopride homepage] and start using the website. 
 
 ----
 
