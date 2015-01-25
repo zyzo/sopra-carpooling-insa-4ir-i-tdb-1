@@ -1,0 +1,8 @@
+com.sopride.core.beans
+com.sopride.core.exception
+com.sopride.dao
+com.sopride.web.controller
+com.sopride.web.filter
+com.sopride.web.listener
+com.sopride.web.servlet
+com.sopride.web.util
