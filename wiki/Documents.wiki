@@ -1,0 +1,4 @@
+#summary Links to Javadoc, SRS, SDD etc.
+
+ * You can find the Javadoc [https://goo.gl/C9KTlJ online] or in the _svn/trunk/SopRide/doc/_ folder
+ * [https://drive.google.com/folderview?id=0B6P7k_xa0VHRVUFRX1R0WE92cmM&usp=drive_web Our google drive folder] contains the SRS, the SDD and more !
