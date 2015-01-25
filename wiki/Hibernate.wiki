@@ -1,29 +1,26 @@
-#summary One-sentence summary of this page.
+#summary User Manual for Hibernate.
 
-= Hibernare=
 
-Hibernate permet d'avoir une interface et une communication avec la base de donnée de manière simple
+= Introduction =
+
+Hibernate simplifies the communication between a Java EE class and a database.
 
 
 = Mapping =
 
-S'il on veut mapper un java.beans avec une table, on utilise des annotations.
-1) Dans le fichier XML, hibernate.cfg.xml, on rajoute une ligne :
+ * In hibernate.cfg.xml, add your class :
 {{{
-<mapping class="NewClass"/>
+<mapping class="MyClass"/>
 }}}
-
-2)
-On indique dans la classe le nom de la table qui correspond
+ 
+ * In the class, inform the table name corresponding :
 {{{
 @Entity
-@Table(name="NameofTable")
+@Table(name="NameofTheTable")
 public class MyClass{
 }}}
 
-3) 
-
-On mappe un attribut avec les colonnes de la table
+ * Column/Attribute mapping
 {{{
 @Column(name = "nameofCollumn1")
 private int attribute1;
@@ -33,21 +30,19 @@ private String attribute2;
 private String attribute3;
 }}}
 
-4) 
-Pour des cas plus compliqué (ManytoMany, jointure) 
+ * For more specific mapping (ManytoMany, ...), use the tutoriels [http://www.mkyong.com/tutorials/hibernate-tutorials/ here]
 
-http://www.mkyong.com/tutorials/hibernate-tutorials/
 
-==Transaction avec la base de donnée==
+== Transactions ==
+To save the new data, it is very simple with Hibernate 
 
-Pour sauvegarder une nouvelle donnée, la procédure est simple : 
-Dans la classe DAO il faut les arguments :  
+ * In the DAO class, use : 
 {{{
 private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 private Session session = sessionFactory.openSession();
 }}}
 
-puis pour sauvegarder
+ * In order to save, use this code : 
 {{{
 public void register(User user){
 		session.beginTransaction();
@@ -55,14 +50,9 @@ public void register(User user){
 		session.getTransaction().commit();
 	}
 }}}
-beginTransaction est la méthode pour commencer une liaison avec la Base de donnée
-save()rendre l'attribut dans la table
-session.getTransaction().commit(); 
-fini la transaction et ferme la liaison.
 
+ * If you want to get all the items from a table : 
 
-
-Pour récupérer tous les élément d'une table de la base de donnée : 
 {{{
 
 public List<User> getUser(){
@@ -76,4 +66,4 @@ public List<User> getUser(){
 
 }}}
 
-Il faut créer un objet query qui contient en String la requête SQL.
+_Note that you have to create a Query object containing the String SQL query.
