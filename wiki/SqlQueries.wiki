@@ -3,13 +3,10 @@
 
 = Database initialisation =
 
-* Launch EasyPHP and then go to [http://127.0.0.1/modules/ EasyPHP Administration Modules]
-
-* Click on PHPMyAdmin
-
-* Then, click on the "SQL" button visible at the top of the interface.
-
-* Paste the following SQL queries : 
+ # Launch EasyPHP and then go to [http://127.0.0.1/modules/ EasyPHP Administration Modules]
+ # Click on PHPMyAdmin
+ # Then, click on the "SQL" button visible at the top of the interface.
+ # Paste the following SQL queries : 
 
 {{{
 
