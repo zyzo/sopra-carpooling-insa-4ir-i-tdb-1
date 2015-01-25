@@ -37,7 +37,7 @@ You have to execute the SQL Script _svn/trunk/SopRide/db/setupDatabase.sql_ in o
 ----
 
 = Launch the web application =
- # Once you have launched Eclipse Luna and you have checked out our project, press CTRL+F11 to Run the Application
+ # Once you have launched Eclipse Luna and you have checked out our project, press CTRL + F11 to Run the Application
  # Go to [http://localhost:8080/SopRide/ the Sopride homepage] and start using the website. 
 
 ----
