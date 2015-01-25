@@ -1,4 +1,4 @@
-#summary User manual - Simple guide to set up *local* development environment for the project
+#summary User manual - Simple guide to set up LOCAL development environment for the project
 #labels Phase-Deploy,Phase-Implementation
 
 = The softwares needed =
