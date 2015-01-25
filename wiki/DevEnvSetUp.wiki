@@ -1,27 +1,55 @@
-#summary Simple guide to set up local development environment for the project
+#summary User manual - Simple guide to set up *local* development environment for the project
+#labels Phase-Deploy,Phase-Implementation
 
-= Eclipse & Tomcat =
+= The softwares needed =
 
- * Download (if not already) [http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html JDK1.7] 
+ * Download and install (if not already) [http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html JDK1.7] 
 
- * Download and extract [https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar Eclipse Luna for JavaEE]
+ * Download and install [https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar Eclipse Luna for JavaEE]
 
- * Download and extract [http://tomcat.apache.org/download-80.cgi Apache Tomcat 8.0.15] (Core)
+ * Download and install [http://tomcat.apache.org/download-80.cgi Apache Tomcat 8.0.15] (Core)
   
+ * Install SVN plugin for eclipse ([https://eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php detailed instructions here])
 
- * Install svn plugin for eclipse ([https://eclipse.org/subversive/documentation/gettingStarted/aboutSubversive/install.php detailed instructions here])
+ * Download and install [https://bitbucket.org/easyphp/easyphp-devserver/downloads/EasyPHP-DevServer-14.1VC11-install.exe EasyPHP] for local database administration 
 
- * Checkout /trunk/PracticalExamples project to test the environment (check PracticalExamples/README.md for more info)
-
------
-= MySQL =
- 
- * Install [http://dev.mysql.com/downloads/mysql/#downloads MySQL 5.6.22] 
- * Run all scripts in _PracticalExamples/db/setupDatabase.sql_, 3 first commands must be executed by mysql root user
-  (could use [http://docs.phpmyadmin.net/en/latest/setup.html phpMyAdmin] to have nice mysql user interface)
- * Go to http://localhost:8080/PracticalExamples/suggest, post a suggestion and test if it is inserted to the database. 
 ----
----> Useful sources : 
+
+= Check out the project =
+
+Within Eclipse, check out our google code project 
+{{{
+svn checkout http://sopra-carpooling-insa-4ir-i-tdb-1.googlecode.com/svn/trunk/ sopra-carpooling-insa-4ir-i-tdb-1-read-only
+}}}
+
+----
+
+= Database initialisation =
+
+You have to execute the SQL Script _svn/trunk/SopRide/db/setupDatabase.sql_ in order to initialise your database.
+
+# Launch EasyPHP and then go to [http://127.0.0.1/modules/ EasyPHP Administration Modules]
+# Click on PHPMyAdmin
+# Then, click on the "SQL" button visible at the top of the interface.
+# Paste the SQL queries from _svn/trunk/SopRide/db/setupDatabase.sql_ (you can access to a copy of the file on the dedicated wiki page) 
+
+
+----
+
+= Launch the web application =
+# Once you have launched Eclipse Luna and you have checked out our project, press CTRL+F11 to Run the Application
+# Go to [http://localhost:8080/SopRide/ the Sopride homepage] and start using the website. 
+
+----
+
+= Discover all the features included =
+
+<wiki:video url="https://www.youtube.com/watch?v=aTBKoviwRYU"/>
+
+----
+
+
+= Web development : Useful sources = 
 
 http://openclassrooms.com/courses/creez-votre-application-web-avec-java-ee/outils-et-environnement-de-developpement
 
